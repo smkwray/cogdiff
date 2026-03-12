@@ -1,0 +1,64 @@
+sampling_schemes:
+  - sibling_restricted
+  - full_cohort
+  - one_pair_per_family
+age_adjustment:
+  - quadratic
+  - cubic
+  - spline
+residualization_mode:
+  - pooled
+  - within_sex
+inference:
+  - robust_cluster
+  - family_bootstrap
+weights:
+  - unweighted
+  - weighted
+harmonization_baseline_method: signed_merge
+harmonization_methods:
+  - zscore_by_branch
+rerun_timeout_seconds: 300
+weights_rerun:
+  min_positive_rows: 5
+  min_positive_share: 0.05
+  min_effective_n_total: 30
+  min_effective_n_by_sex: 10
+  candidate_cols:
+    nlsy79:
+      - sample_weight_79
+      - cross_sectional_weight_79
+      - sample_weight_81_asvab
+      - sample_weight_96
+    nlsy97:
+      - r1_sample_weight
+      - r1_sample_weight_cc
+      - r1_cross_sectional_sampling_weight
+      - r1_sample_weight_panel
+      - r2_sample_weight
+      - r2_cross_sectional_sampling_weight
+    cnlsy:
+      - mother_sampling_weight_79
+      - child_sampling_weight_86
+      - child_sampling_weight_86_revised
+      - child_sampling_weight_1998
+      - child_sampling_weight_2016_under14
+rerun_commands:
+  sampling:
+    full_cohort: "{python_executable} {project_root}/scripts/19_run_sampling_rerun.py --project-root {project_root} --variant-token full_cohort"
+    one_pair_per_family: "{python_executable} {project_root}/scripts/19_run_sampling_rerun.py --project-root {project_root} --variant-token one_pair_per_family"
+  age_adjustment:
+    quadratic_within_sex: "{python_executable} {project_root}/scripts/21_run_age_adjustment_rerun.py --project-root {project_root} --cohort {cohort} --variant-token quadratic_within_sex"
+    cubic_pooled: "{python_executable} {project_root}/scripts/21_run_age_adjustment_rerun.py --project-root {project_root} --cohort {cohort} --variant-token cubic_pooled"
+    cubic_within_sex: "{python_executable} {project_root}/scripts/21_run_age_adjustment_rerun.py --project-root {project_root} --cohort {cohort} --variant-token cubic_within_sex"
+    spline_pooled: "{python_executable} {project_root}/scripts/21_run_age_adjustment_rerun.py --project-root {project_root} --cohort {cohort} --variant-token spline_pooled"
+    spline_within_sex: "{python_executable} {project_root}/scripts/21_run_age_adjustment_rerun.py --project-root {project_root} --cohort {cohort} --variant-token spline_within_sex"
+  model_form:
+    single_factor_alt: "{python_executable} {project_root}/scripts/22_run_model_form_rerun.py --project-root {project_root} --cohort {cohort} --variant-token single_factor_alt"
+    bifactor_alt: "{python_executable} {project_root}/scripts/22_run_model_form_rerun.py --project-root {project_root} --cohort {cohort} --variant-token bifactor_alt"
+  inference:
+    family_bootstrap: "{python_executable} {project_root}/scripts/20_run_inference_bootstrap.py --project-root {project_root} --variant-token family_bootstrap --engine sem_refit --n-bootstrap 150 --min-success-share 0.90 --sem-timeout-seconds 60 --skip-successful"
+  weights:
+    weighted: "{python_executable} {project_root}/scripts/23_run_weights_rerun.py --project-root {project_root} --variant-token weighted"
+  harmonization:
+    zscore_by_branch: "{python_executable} {project_root}/scripts/18_run_harmonization_rerun.py --project-root {project_root} --cohort {cohort} --variant-token {variant_token}"

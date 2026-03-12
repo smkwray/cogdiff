@@ -1,0 +1,13 @@
+cohort,outcome,status,reason,sex_col,outcome_col,n_total,n_used,n_male,n_female,beta_g_male,SE_beta_g_male,p_value_beta_g_male,r2_male,beta_g_female,SE_beta_g_female,p_value_beta_g_female,r2_female,delta_r2_male_minus_female,z_delta_beta,p_value_delta_beta,source_data
+nlsy79,employment,not_feasible,missing_outcome_column,sex,,9261,0,0,0,,,,,,,,,,,,data/processed/nlsy79_cfa_resid.csv
+nlsy79,wages,computed,,sex,annual_earnings,9261,7390,3513,3877,7241.241111121896,285.6260201163441,2.3369896113436164e-130,0.1547361978734556,6071.5322901270465,243.7753644586176,3.886638106912397e-127,0.1379927312042849,0.016743466669170703,3.114977292241507,0.0018395907110232168,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education,computed,,sex,education_years,9261,9258,4585,4673,1.6567811693865362,0.03550974107097556,0.0,0.3220297869289592,1.781479757506807,0.04254258714392733,0.0,0.2729432840952155,0.04908650283374372,-2.250270985388491,0.024431748589633616,data/processed/nlsy79_cfa_resid.csv
+nlsy79,health,not_feasible,missing_outcome_column,sex,,9261,0,0,0,,,,,,,,,,,,data/processed/nlsy79_cfa_resid.csv
+nlsy97,employment,not_feasible,missing_outcome_column,sex,,6992,0,0,0,,,,,,,,,,,,data/processed/nlsy97_cfa_resid.csv
+nlsy97,wages,not_feasible,missing_outcome_column,sex,,6992,0,0,0,,,,,,,,,,,,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education,computed,,sex,education_years,6992,6921,3496,3425,1.7992229195731697,0.0896740905781522,7.689314356395943e-85,0.10331278404182942,2.3004873824908914,0.10410584395034499,2.916367662750917e-101,0.12484409896087267,-0.021531314919043254,-3.6481444472681046,0.0002641411267402914,data/processed/nlsy97_cfa_resid.csv
+nlsy97,health,not_feasible,missing_outcome_column,sex,,6992,0,0,0,,,,,,,,,,,,data/processed/nlsy97_cfa_resid.csv
+cnlsy,employment,not_feasible,missing_outcome_column,sex,,545,0,0,0,,,,,,,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,wages,not_feasible,missing_outcome_column,sex,,545,0,0,0,,,,,,,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education,computed,,sex,education_years,545,183,88,95,1.40100987627147,0.29162409858663363,6.52057865004853e-06,0.2115877372361068,1.8646720283752174,0.273402120407254,9.032117370561003e-10,0.33340917065117237,-0.12182143341506557,-1.1599047238710078,0.24608759923400292,data/processed/cnlsy_cfa_resid.csv
+cnlsy,health,not_feasible,missing_outcome_column,sex,,545,0,0,0,,,,,,,,,,,,data/processed/cnlsy_cfa_resid.csv

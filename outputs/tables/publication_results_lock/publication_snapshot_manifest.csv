@@ -1,0 +1,4 @@
+snapshot_utc,path,sha256,size_bytes,mtime_utc
+2026-03-11T20:34:08Z,outputs/tables/analysis_tiers.csv,c032b52fef1b7e49837ec2844240a76102138c59f63cc6140736a92c02e55df3,357,2026-03-01T15:33:05Z
+2026-03-11T20:34:08Z,outputs/tables/specification_stability_summary.csv,43b1fb1661b6b5b88f6358de3e4dc73c67e9a44060b926f0f089b035c4487b42,2775,2026-03-01T15:55:28Z
+2026-03-11T20:34:08Z,outputs/tables/confirmatory_exclusions.csv,535734fd325f3217fc219d8d5817ebbd616f9425ef9eff5515d2e2ab1b5d9c14,374,2026-03-01T15:32:41Z

@@ -1,0 +1,87 @@
+cohort: cnlsy
+download_url: https://nlsinfo.org/cohort-data/nlscya_all_1979-2020.zip
+raw_zip_name: nlscya_all_1979-2020.zip
+expected_age_range:
+  min: 5
+  max: 18
+pair_rules:
+  relatedness_r: 0.5
+  relationship_path: Gen2Siblings
+minimum_tests_observed: 3
+sample_construct:
+  input_file: panel_extract.csv
+  id_col: person_id
+  sex_col: sex
+  age_col: csage
+  age_resid_col: birth_year
+  age_unit: months
+  subtests: [PPVT, PIAT_RR, PIAT_RC, PIAT_MATH, DIGITSPAN]
+  min_tests: 3
+  adequacy:
+    min_total_n: 100
+    min_per_sex_n: 30
+  missing_codes: [-1, -2, -3, -4, -5, -7]
+  column_map:
+    C0000100: person_id
+    C0000200: MPUBID
+    C0005300: race_ethnicity_raw
+    C0005400: sex
+    C5801600: csage
+    C0005700: birth_year
+    C0053500: mother_education
+    Y1211300: education_years
+    Y3291400: wage_income_2014_raw
+    Y3291500: wage_income_2014_best_est
+    Y3299800: family_income_2014_raw
+    Y3299900: family_income_2014_best_est
+    Y3066000: employment_2014
+    Y3112400: annual_earnings
+    Y3331900: age_2014
+    Y3332100: education_years_2014
+    Y3332200: degree_2014
+    Y3333000: enrolled_2014
+    Y3333300: num_current_jobs_2014
+    Y3333400: total_hours_2014
+    C0070004: mother_sampling_weight_79
+    C0581200: child_sampling_weight_86
+    C0581201: child_sampling_weight_86_revised
+    C1801200: child_sampling_weight_1998
+    C6051600: child_sampling_weight_2016_under14
+    C3616100: PPVT
+    C3993900: PIAT_RR
+    C3994200: PIAT_RC
+    C3993800: PIAT_MATH
+    C3612200: DIGITSPAN
+panel_extract:
+  required_columns:
+    - C0000100
+    - C0000200
+    - C0005300
+    - C0005400
+    - C0005700
+    - C0053500
+    - C5801600
+    - C3612200
+    - C3616100
+    - C3993800
+    - C3993900
+    - C3994200
+    - Y1211300
+  optional_columns:
+    - Y3291400
+    - Y3291500
+    - Y3299800
+    - Y3299900
+    - Y3066000
+    - Y3112400
+    - Y3331900
+    - Y3332100
+    - Y3332200
+    - Y3333000
+    - Y3333300
+    - Y3333400
+    - C0070004
+    - C0581200
+    - C0581201
+    - C1801200
+    - C6051600

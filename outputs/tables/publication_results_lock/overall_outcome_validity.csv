@@ -1,0 +1,13 @@
+cohort,outcome,status,reason,outcome_col,n_total,n_used,corr_all,beta_g,SE_beta_g,p_value_beta_g,r2,source_data
+nlsy79,earnings,computed,,annual_earnings,9261,7390,0.40031177184794225,7307.581245761658,194.6197809704231,1.4997868467544337e-282,0.160249514680039,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,computed,,household_income,9261,4736,0.4178266238532758,28005.381607477935,885.0524164999048,1.6357107044077885e-199,0.1745790876006268,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,computed,,net_worth,9261,4849,0.3192540120642203,125746.50550744319,5361.419730882828,2.567795828230775e-115,0.10192312421910132,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education,computed,,education_years,9261,9258,0.5296150037860452,1.652441784199825,0.027508823255033663,0.0,0.28049205223529294,data/processed/nlsy79_cfa_resid.csv
+nlsy97,earnings,not_feasible,missing_outcome_column,,6992,0,,,,,,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,computed,,household_income,6992,5213,0.27196057275172336,18893.366411046118,926.0984086757661,4.556171793895492e-89,0.07396255313144562,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,computed,,net_worth,6992,5297,0.16281612144916924,27260.051767896475,2270.1901737930475,8.590855347580837e-33,0.026509089403750408,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education,computed,,education_years,6992,6921,0.3304405749407705,1.9921594053269414,0.06840712781103117,5.522730122047598e-176,0.1091909735671871,data/processed/nlsy97_cfa_resid.csv
+cnlsy,earnings,not_feasible,missing_outcome_column,,545,0,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,household_income,not_feasible,missing_outcome_column,,545,0,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,net_worth,not_feasible,missing_outcome_column,,545,0,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education,computed,,education_years,545,183,0.4753735734218252,1.4673818518051531,0.20185750578021835,1.0465342012600508e-11,0.22598003430783553,data/processed/cnlsy_cfa_resid.csv

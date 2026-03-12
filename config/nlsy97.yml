@@ -1,0 +1,334 @@
+cohort: nlsy97
+download_url: https://nlsinfo.org/cohort-data/nlsy97_all_1997-2023.zip
+raw_zip_name: nlsy97_all_1997-2023.zip
+expected_age_range:
+  min: 13
+  max: 17
+pair_rules:
+  relatedness_r: 0.5
+  relationship_path: any
+sem_fit:
+  std_lv: false
+sample_construct:
+  input_file: panel_extract.csv
+  id_col: person_id
+  sex_col: sex
+  age_col: null
+  age_resid_col: birth_year
+  subtests: [GS, AR, WK, PC, 'NO', CS, AS, MK, MC, EI]
+  standardize_output: true
+  auto_col: AUTO
+  shop_col: SHOP
+  min_tests: 10
+  missing_codes: [-1, -2, -3, -4, -5]
+  column_map:
+    R0000100: person_id
+    R0536300: sex
+    R1482600: race_ethnicity_raw
+    R0536402: birth_year
+    R0554500: mother_education
+    R0554800: father_education
+    R1236100: r1_sample_weight
+    R1236101: r1_sample_weight_cc
+    R1236200: r1_cross_sectional_sampling_weight
+    R1236201: r1_sample_weight_panel
+    R2600300: r2_sample_weight
+    R2600400: r2_cross_sectional_sampling_weight
+    R9705200: GS_POS
+    R9706400: GS_NEG
+    R9705300: AR_POS
+    R9706500: AR_NEG
+    R9705400: WK_POS
+    R9706600: WK_NEG
+    R9705500: PC_POS
+    R9706700: PC_NEG
+    R9705600: 'NO_POS'
+    R9706800: 'NO_NEG'
+    R9705700: CS_POS
+    R9706900: CS_NEG
+    R9705800: AUTO_POS
+    R9707000: AUTO_NEG
+    R9705900: SHOP_POS
+    R9707100: SHOP_NEG
+    R9706000: MK_POS
+    R9707200: MK_NEG
+    R9706100: MC_POS
+    R9707300: MC_NEG
+    R9706200: EI_POS
+    R9707400: EI_NEG
+    # Event-history arrest/incarceration status (Dec 2019; 0=never, 1-98=this month, 99=previously)
+    E8013912: arrest_status_2019_12
+    E8023912: incarc_status_2019_12
+    # 1997 self-report delinquency (ever, age 13-17)
+    R0360900: ever_destroyed_property
+    R0361000: ever_theft_under50
+    R0361100: ever_theft_over50
+    R0361300: ever_attacked
+    R0361400: ever_sold_drugs
+    Z9083800: education_years
+    Z9033700: sat_math_2007_bin
+    Z9033900: sat_verbal_2007_bin
+    Z9034100: act_2007_bin
+    T5206900: household_income
+    T5229101: interview_month_2010
+    T5229102: interview_year_2010
+    T6680901: interview_month_2011
+    T6680902: interview_year_2011
+    T7295800: employment_2011
+    U3444000: household_income_2019
+    U3455100: employment_2019
+    U3475201: interview_month_2019
+    U3475202: interview_year_2019
+    Z9074610: ui_spells_2019
+    Z9083410: ui_amount_2019
+    T7311500: occupation_code_2011_slot01
+    T7311600: occupation_code_2011_slot02
+    T7311700: occupation_code_2011_slot03
+    T7311800: occupation_code_2011_slot04
+    T7311900: occupation_code_2011_slot06
+    T8154001: interview_month_2013
+    T8154002: interview_year_2013
+    T8821300: occupation_code_2013_slot01
+    T8821400: occupation_code_2013_slot02
+    T8821500: occupation_code_2013_slot03
+    T8821600: occupation_code_2013_slot04
+    T8821700: occupation_code_2013_slot06
+    T8821800: occupation_code_2013_slot08
+    U0036301: interview_month_2015
+    U0036302: interview_year_2015
+    U0741900: occupation_code_2015_slot01
+    U0742000: occupation_code_2015_slot02
+    U0742100: occupation_code_2015_slot03
+    U0742200: occupation_code_2015_slot04
+    U0742300: occupation_code_2015_slot05
+    U0742400: occupation_code_2015_slot08
+    U0742500: occupation_code_2015_slot09
+    U1876601: interview_month_2017
+    U1876602: interview_year_2017
+    U2679300: occupation_code_2017_slot01
+    U2679400: occupation_code_2017_slot02
+    U2679500: occupation_code_2017_slot03
+    U2679600: occupation_code_2017_slot04
+    U2679700: occupation_code_2017_slot05
+    U2679800: occupation_code_2017_slot06
+    U2679900: occupation_code_2017_slot07
+    U4282300: annual_earnings_2019
+    U4114400: occupation_code_2019_slot01
+    U4114500: occupation_code_2019_slot02
+    U4114600: occupation_code_2019_slot03
+    U4114700: occupation_code_2019_slot04
+    U4114800: occupation_code_2019_slot05
+    U4114900: occupation_code_2019_slot06
+    U4115000: occupation_code_2019_slot07
+    U4949700: household_income_2021
+    U4958300: employment_2021
+    U5072600: degree_2021
+    U4976701: interview_month_2021
+    U4976702: interview_year_2021
+    Z9074612: ui_spells_2021
+    Z9083412: ui_amount_2021
+    U5753500: annual_earnings_2021
+    U5591200: occupation_code_2021_slot01
+    U5591300: occupation_code_2021_slot02
+    U5591400: occupation_code_2021_slot03
+    U5591500: occupation_code_2021_slot05
+    U5591600: occupation_code_2021_slot06
+    Z9121900: net_worth
+    # Health and substance use
+    U7239800: health_status_2023
+    U7239100: smoking_days_30_2023
+    U7239400: alcohol_days_30_2023
+    U7239600: binge_days_30_2023
+    U1032300: marijuana_days_30_2015
+    T7635600: height_feet_2011
+    T7635700: height_inches_2011
+    T7635800: weight_pounds_2011
+    U7239900: weight_pounds_2023
+    # Mental health
+    U6365300: cesd_score_2023
+    # Family formation
+    Z9149100: marital_status_cumulative
+    Z9123000: num_marriages
+    Z9073201: first_marriage_year
+    Z9085400: num_bio_children
+    U3438101: first_child_birth_year_2019
+    Z9073400: first_marriage_end_reason
+    # Welfare and housing
+    U4285700: govt_program_income_2019
+    Z9165100: house_type_40
+  branch_harmonization:
+    enabled: true
+    method: signed_merge
+    implied_decimal_places: 3
+    emit_source_cols: true
+    pairs:
+      - output: GS
+        pos_col: GS_POS
+        neg_col: GS_NEG
+      - output: AR
+        pos_col: AR_POS
+        neg_col: AR_NEG
+      - output: WK
+        pos_col: WK_POS
+        neg_col: WK_NEG
+      - output: PC
+        pos_col: PC_POS
+        neg_col: PC_NEG
+      - output: 'NO'
+        pos_col: 'NO_POS'
+        neg_col: 'NO_NEG'
+      - output: CS
+        pos_col: CS_POS
+        neg_col: CS_NEG
+      - output: AUTO
+        pos_col: AUTO_POS
+        neg_col: AUTO_NEG
+      - output: SHOP
+        pos_col: SHOP_POS
+        neg_col: SHOP_NEG
+      - output: MK
+        pos_col: MK_POS
+        neg_col: MK_NEG
+      - output: MC
+        pos_col: MC_POS
+        neg_col: MC_NEG
+      - output: EI
+        pos_col: EI_POS
+        neg_col: EI_NEG
+panel_extract:
+  required_columns:
+    - R0000100
+    - R0536300
+    - R1482600
+    - R0536402
+    - R0554500
+    - R0554800
+    - R9705200
+    - R9705300
+    - R9705400
+    - R9705500
+    - R9705600
+    - R9705700
+    - R9705800
+    - R9705900
+    - R9706000
+    - R9706100
+    - R9706200
+    - R9706400
+    - R9706500
+    - R9706600
+    - R9706700
+    - R9706800
+    - R9706900
+    - R9707000
+    - R9707100
+    - R9707200
+    - R9707300
+    - R9707400
+    - R9708601
+    - R9708602
+    - R1236100
+    - R1236101
+    - R1236200
+    - R1236201
+    - R2600300
+    - R2600400
+  optional_columns:
+    - E8013912
+    - E8023912
+    - R0360900
+    - R0361000
+    - R0361100
+    - R0361300
+    - R0361400
+    - Z9083800
+    - Z9033700
+    - Z9033900
+    - Z9034100
+    - T5206900
+    - T5229101
+    - T5229102
+    - T6680901
+    - T6680902
+    - T7295800
+    - T8154001
+    - T8154002
+    - T8821300
+    - T8821400
+    - T8821500
+    - T8821600
+    - T8821700
+    - T8821800
+    - U0036301
+    - U0036302
+    - U0741900
+    - U0742000
+    - U0742100
+    - U0742200
+    - U0742300
+    - U0742400
+    - U0742500
+    - U1876601
+    - U1876602
+    - U2679300
+    - U2679400
+    - U2679500
+    - U2679600
+    - U2679700
+    - U2679800
+    - U2679900
+    - U3444000
+    - U3455100
+    - U3475201
+    - U3475202
+    - Z9074610
+    - Z9083410
+    - T7311500
+    - T7311600
+    - T7311700
+    - T7311800
+    - T7311900
+    - U4282300
+    - U4114400
+    - U4114500
+    - U4114600
+    - U4114700
+    - U4114800
+    - U4114900
+    - U4115000
+    - U4949700
+    - U4958300
+    - U5072600
+    - U4976701
+    - U4976702
+    - Z9074612
+    - Z9083412
+    - U5753500
+    - U5591200
+    - U5591300
+    - U5591400
+    - U5591500
+    - U5591600
+    - Z9121900
+    # Health and substance use
+    - U7239800
+    - U7239100
+    - U7239400
+    - U7239600
+    - U1032300
+    - T7635600
+    - T7635700
+    - T7635800
+    - U7239900
+    # Mental health
+    - U6365300
+    # Family formation
+    - Z9149100
+    - Z9123000
+    - Z9073201
+    - Z9085400
+    - U3438101
+    - Z9073400
+    # Welfare and housing
+    - U4285700
+    - Z9165100

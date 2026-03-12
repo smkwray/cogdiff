@@ -1,0 +1,11 @@
+cohort,outcome,status,reason,outcome_col,n_pairs,n_families,mean_abs_g_diff,mean_abs_outcome_diff,corr_abs_diff,beta_abs_g_diff,SE_beta_abs_g_diff,p_value_abs_g_diff,r2,source_data,source_links
+nlsy79,education,computed,,education_years,33,25,1.0587190048949513,3.121212121212121,0.27287486228348745,0.948558051224216,0.6006437641212826,0.1244330606555629,0.07446069046623216,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy79,household_income,not_feasible,insufficient_pairs,household_income,9,7,,,,,,,,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy79,net_worth,not_feasible,insufficient_pairs,net_worth,12,12,,,,,,,,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy79,earnings,not_feasible,insufficient_pairs,annual_earnings,22,18,,,,,,,,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy79,employment,not_feasible,insufficient_pairs,employment_2000,18,14,,,,,,,,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy97,education,computed,,education_years,1559,1261,0.5616058169686049,2.785760102629891,0.025474601884709604,0.3156725431702663,0.3139381774038416,0.3148005756180244,0.0006489553411844762,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+nlsy97,household_income,computed,,household_income_2021,813,689,0.5762292468356688,74401.09963099631,0.001356428179657256,294.87420356841756,7633.595630844956,0.9691961012596458,1.8398974065414464e-06,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+nlsy97,net_worth,computed,,net_worth,995,825,0.566813219085532,83688.14974874372,0.039456490859546625,10628.290723727627,8541.458241716704,0.21367614757716846,0.0015568146709494801,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+nlsy97,earnings,computed,,annual_earnings_2021,636,551,0.5558902368679174,44048.482704402515,0.06164172737139057,7961.789094659128,5119.93648404307,0.1204316962364759,0.003799702553328732,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+nlsy97,employment,computed,,employment_2021,985,814,0.5646004300910552,0.3065989847715736,0.042254423400868636,0.04569097791570708,0.034458269675411525,0.1851543323499256,0.0017854362969398352,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv

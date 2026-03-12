@@ -1,0 +1,100 @@
+cohort,outcome,group_kind,group_value,status,reason,n_pooled,n_group,mean_actual,mean_predicted,mean_residual,se_residual,p_value_residual,pct_over_under,mean_g_proxy,pooled_beta_g,pooled_r2,source_data
+nlsy79,earnings,race,BLACK,computed,,5475,1694,12667.1671,12068.1185,599.0486,269.9731,0.026624330533024276,4.96,-0.5905,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race,HISPANIC,computed,,5475,988,14972.6265,13832.7668,1139.8598,407.3234,0.005235412561564571,8.24,-0.3554,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race,"NON-BLACK, NON-HISPANIC",computed,,5475,2793,18616.2617,19382.8102,-766.5484,284.1569,0.007025619110905593,-3.95,0.3839,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,sex,male,computed,,5475,2579,20858.3684,17014.362,3844.0064,291.2592,1.557802519854902e-38,22.59,0.0687,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,sex,female,computed,,5475,2896,11896.624,15319.8603,-3423.2364,209.4923,1.7557483034723285e-57,-22.35,-0.1576,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race_sex,BLACK|male,computed,,5475,800,15073.4137,12416.1213,2657.2925,446.493,3.975217793798696e-09,21.4,-0.5472,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race_sex,BLACK|female,computed,,5475,894,10513.9262,11756.7066,-1242.7804,306.8737,5.571244535104054e-05,-10.57,-0.6293,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race_sex,HISPANIC|male,computed,,5475,464,20166.3125,14942.1566,5224.1559,681.3007,1.0382973810215901e-13,34.96,-0.2099,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race_sex,HISPANIC|female,computed,,5475,524,10373.6374,12850.4063,-2476.7688,416.2247,4.898327375937832e-09,-19.27,-0.4843,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,5475,1315,24621.9255,20542.9519,4078.9735,440.1745,7.601053860866506e-20,19.86,0.5416,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,earnings,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,5475,1478,13272.9276,18350.6136,-5077.686,329.1604,6.821637277147432e-50,-27.67,0.2436,7466.0679,0.1736,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race,BLACK,computed,,4736,1376,37961.9709,39786.0193,-1824.0484,920.3068,0.04767803562657435,-4.58,-0.562,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race,HISPANIC,computed,,4736,867,48491.0334,46447.7404,2043.293,1368.8233,0.13587029303142587,4.4,-0.3317,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race,"NON-BLACK, NON-HISPANIC",computed,,4736,2493,67545.9707,67249.7992,296.1715,1183.5534,0.8024229598780206,0.44,0.3979,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,sex,male,computed,,4736,2243,57372.8877,59068.5959,-1695.7082,1072.4741,0.11399207752593456,-2.87,0.1117,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,sex,female,computed,,4736,2493,53743.3277,52217.6665,1525.6613,976.4857,0.1183207716828471,2.92,-0.1282,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race_sex,BLACK|male,computed,,4736,635,40978.348,40838.5863,139.7617,1538.1731,0.9276308348034165,0.34,-0.5264,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race_sex,BLACK|female,computed,,4736,741,35377.0864,38884.022,-3506.9356,1084.8921,0.0012814196191305366,-9.02,-0.5924,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race_sex,HISPANIC|male,computed,,4736,403,48562.062,50920.2344,-2358.1724,1886.4463,0.212004599736516,-4.63,-0.1824,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race_sex,HISPANIC|female,computed,,4736,464,48429.3427,42563.2252,5866.1175,1948.5479,0.002750624835979944,13.78,-0.4614,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,4736,1205,68959.0249,71400.418,-2441.3931,1711.9661,0.15410572744323622,-3.42,0.5463,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,4736,1288,66223.9752,63366.6504,2857.3248,1635.308,0.08082899966375466,4.51,0.259,28402.571,0.1803,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race,BLACK,computed,,4849,1497,47774.6553,73313.9941,-25539.3388,3856.791,4.929505678080077e-11,-34.84,-0.5906,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race,HISPANIC,computed,,4849,887,103755.2864,105228.451,-1473.1646,8498.9749,0.8624281832187003,-1.4,-0.3483,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race,"NON-BLACK, NON-HISPANIC",computed,,4849,2465,215632.368,199592.1703,16040.1976,7809.5878,0.040089614564948695,8.04,0.3824,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,sex,male,computed,,4849,2378,147648.6493,158445.5331,-10796.8838,6480.9222,0.09585539866754841,-6.81,0.066,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,sex,female,computed,,4849,2471,139204.7337,128814.2077,10390.526,6060.3722,0.08656183888922765,8.07,-0.1649,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race_sex,BLACK|male,computed,,4849,727,56650.4003,78444.0564,-21793.6561,6487.6407,0.0008223451334441532,-27.78,-0.5548,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race_sex,BLACK|female,computed,,4849,770,39394.5688,68470.4157,-29075.8469,4325.2872,3.4862157182457904e-11,-42.46,-0.6244,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race_sex,HISPANIC|male,computed,,4849,434,108967.2857,124215.591,-15248.3053,13647.7521,0.26449590214408814,-12.28,-0.1994,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race_sex,HISPANIC|female,computed,,4849,453,98761.8918,87037.6811,11724.2107,10271.4864,0.2542942465812669,13.47,-0.4909,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,4849,1217,215802.6664,218442.96,-2640.2936,11029.419,0.8108462684610969,-1.21,0.5315,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,4849,1248,215466.2997,181209.6294,34256.6702,11036.9491,0.001953404066357035,18.9,0.2369,128319.6412,0.1092,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race,BLACK,computed,,5794,1809,13.1598,12.4957,0.664,0.0445,1.7202065540996e-47,5.31,-0.5948,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race,HISPANIC,computed,,5794,1049,12.7874,12.9077,-0.1203,0.0692,0.08224093758014672,-0.93,-0.3585,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race,"NON-BLACK, NON-HISPANIC",computed,,5794,2936,13.8123,14.1785,-0.3661,0.0394,2.806063108622517e-20,-2.58,0.3729,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,sex,male,computed,,5794,2751,13.2377,13.6306,-0.3928,0.0391,2.5041645119852928e-23,-2.88,0.058,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,sex,female,computed,,5794,3043,13.5905,13.2354,0.3551,0.0388,1.0075277325987636e-19,2.68,-0.1698,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race_sex,BLACK|male,computed,,5794,858,12.8648,12.5757,0.2891,0.0599,1.6418635507494878e-06,2.3,-0.5495,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race_sex,BLACK|female,computed,,5794,951,13.4259,12.4236,1.0023,0.0633,2.8748640424439075e-50,8.07,-0.6356,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race_sex,HISPANIC|male,computed,,5794,496,12.6472,13.1687,-0.5216,0.0951,6.637388786264864e-08,-3.96,-0.2091,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race_sex,HISPANIC|female,computed,,5794,553,12.9132,12.6737,0.2395,0.0973,0.01409639633081938,1.89,-0.4925,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,5794,1397,13.6764,14.4424,-0.766,0.056,4.769077356923069e-40,-5.3,0.526,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education_years,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,5794,1539,13.9357,13.9389,-0.0032,0.0537,0.9524479108385523,-0.02,0.2339,1.7346,0.3106,data/processed/nlsy79_cfa_resid.csv
+nlsy97,earnings,race,BLACK,computed,,4237,1038,50851.0694,52124.0876,-1273.0182,1469.1336,0.38641128119532714,-2.44,-0.3536,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race,HISPANIC,computed,,4237,815,56347.811,56658.3488,-310.5377,1518.2153,0.8379816478928162,-0.55,-0.1822,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race,"NON-BLACK, NON-HISPANIC",computed,,4237,2384,73012.0193,72351.5826,660.4367,1328.7058,0.6191977839180931,0.91,0.4106,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,sex,male,computed,,4237,2123,74677.8931,65257.8052,9420.0879,1358.9037,5.480446720371645e-12,14.44,0.1427,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,sex,female,computed,,4237,2114,54033.2843,63493.4767,-9460.1924,1077.7304,3.3666021639963637e-18,-14.9,0.0758,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race_sex,BLACK|male,computed,,4237,454,53385.337,50429.4039,2955.9331,2254.5406,0.19048744714194335,5.86,-0.4176,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race_sex,BLACK|female,computed,,4237,584,48880.9366,53441.53,-4560.5933,1926.3739,0.018236676688613045,-8.53,-0.3039,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race_sex,HISPANIC|male,computed,,4237,413,64224.3245,56938.1596,7286.1649,2379.3287,0.002340608872178153,12.8,-0.1719,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race_sex,HISPANIC|female,computed,,4237,402,48255.7711,56370.8815,-8115.1103,1791.7828,7.824637862118581e-06,-14.4,-0.1928,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,4237,1256,85811.7659,73353.4324,12458.3335,1995.6825,5.874991111614346e-10,16.98,0.4487,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,earnings,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,4237,1128,58759.8191,71236.0477,-12476.2285,1631.1309,4.333089707457448e-14,-17.51,0.3682,26488.4121,0.1104,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race,BLACK,computed,,4844,1277,71489.1457,82250.5659,-10761.4202,2327.7708,4.16502971823212e-06,-13.08,-0.478,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race,HISPANIC,computed,,4844,930,92119.1828,92965.9732,-846.7904,2546.773,0.739590193285785,-0.91,-0.2691,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race,"NON-BLACK, NON-HISPANIC",computed,,4844,2637,130948.5578,125438.5659,5509.9919,2286.499,0.01602963073506719,4.39,0.3639,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,sex,male,computed,,4844,2343,113199.6726,110241.5858,2958.0868,2207.9164,0.18045207427220164,2.68,0.0676,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,sex,female,computed,,4844,2501,102777.6861,105548.8966,-2771.2105,1967.8703,0.15918785293926335,-2.63,-0.0238,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race_sex,BLACK|male,computed,,4844,570,73943.5316,79959.3336,-6015.802,3441.5857,0.0810079007913587,-7.52,-0.5226,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race_sex,BLACK|female,computed,,4844,707,69510.3621,84097.8112,-14587.4491,3153.7374,4.4463280766613505e-06,-17.35,-0.442,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race_sex,HISPANIC|male,computed,,4844,447,96369.2752,95181.5174,1187.7578,4114.0237,0.7729378180537724,1.25,-0.2266,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race_sex,HISPANIC|female,computed,,4844,483,88185.8675,90915.5628,-2729.6953,3092.1522,0.37779429786276264,-3.0,-0.3085,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,4844,1326,135748.0799,128335.654,7412.4259,3328.1204,0.026100654038460493,5.78,0.4205,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,4844,1311,126094.1213,122508.3303,3585.791,3134.2251,0.25280122278016576,2.93,0.3066,51350.56,0.139,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race,BLACK,computed,,4529,1230,22712.3285,37841.1824,-15128.8539,2114.9256,1.4508041156891177e-12,-39.98,-0.5079,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race,HISPANIC,computed,,4529,883,38240.9785,43818.9504,-5577.9719,3043.0418,0.0671357598815943,-12.73,-0.2785,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race,"NON-BLACK, NON-HISPANIC",computed,,4529,2416,70309.2351,60568.4075,9740.8276,2744.4319,0.00039362238165496874,16.08,0.3563,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,sex,male,computed,,4529,2231,54853.8888,52500.3972,2353.4916,2389.4113,0.32474706994004093,4.48,0.0487,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,sex,female,computed,,4529,2298,47515.6806,49800.5543,-2284.8737,2385.1375,0.3381821864407972,-4.59,-0.0516,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race_sex,BLACK|male,computed,,4529,563,26095.2984,36568.1029,-10472.8045,2919.8252,0.0003639502378818258,-28.64,-0.5515,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race_sex,BLACK|female,computed,,4529,667,19856.8381,38915.7606,-19058.9226,3016.3057,4.828941757377254e-10,-48.97,-0.4712,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race_sex,HISPANIC|male,computed,,4529,424,41156.8255,45154.4905,-3997.6651,4063.1126,0.3257309048254079,-8.85,-0.2231,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race_sex,HISPANIC|female,computed,,4529,459,35547.4728,42585.2489,-7037.7761,4495.7116,0.11816993206037538,-16.53,-0.3296,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,4529,1244,72537.6841,62214.6626,10323.0215,3819.4255,0.006970145911800273,16.59,0.413,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,4529,1172,67943.8848,58821.0173,9122.8675,3947.6668,0.021008548598314088,15.51,0.2961,25861.2487,0.0392,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race,BLACK,computed,,5304,1438,13.8595,13.3195,0.54,0.131,3.9594269999363274e-05,4.05,-0.495,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race,HISPANIC,computed,,5304,1025,13.8,13.8103,-0.0103,0.1392,0.9407579526831408,-0.07,-0.2655,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race,"NON-BLACK, NON-HISPANIC",computed,,5304,2841,14.8522,15.1218,-0.2696,0.0693,0.00010150481489976145,-1.78,0.3489,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,sex,male,computed,,5304,2574,13.9542,14.4626,-0.5084,0.0809,3.935799279317942e-10,-3.52,0.0402,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,sex,female,computed,,5304,2730,14.781,14.3016,0.4794,0.0823,6.347100509227408e-09,3.35,-0.0352,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race_sex,BLACK|male,computed,,5304,655,13.0336,13.2103,-0.1767,0.1983,0.37305279962568866,-1.34,-0.546,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race_sex,BLACK|female,computed,,5304,783,14.5504,13.4108,1.1396,0.1715,5.6278946460957076e-11,8.5,-0.4523,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race_sex,HISPANIC|male,computed,,5304,486,13.784,13.8821,-0.0982,0.2648,0.710967613240589,-0.71,-0.2313,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race_sex,HISPANIC|female,computed,,5304,539,13.8145,13.7456,0.0688,0.1146,0.5483365562753049,0.5,-0.2964,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,5304,1433,14.4327,15.2319,-0.7992,0.069,9.330388699463433e-30,-5.25,0.4002,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education_years,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,5304,1408,15.2791,15.0097,0.2694,0.1192,0.023950279235613,1.79,0.2967,2.1318,0.1417,data/processed/nlsy97_cfa_resid.csv
+cnlsy,education_years,race,BLACK,computed,,171,42,4.5714,5.0142,-0.4428,0.305,0.15413607467876708,-8.83,-0.2832,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race,HISPANIC,computed,,171,27,6.0,5.3019,0.6981,0.335,0.04711332378077885,13.17,-0.0691,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race,"NON-BLACK, NON-HISPANIC",computed,,171,102,5.7353,5.7378,-0.0025,0.2146,0.9908330043866789,-0.04,0.2468,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,sex,male,computed,,171,78,5.2051,5.7377,-0.5325,0.252,0.03781620888844083,-9.28,0.2465,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,sex,female,computed,,171,93,5.7312,5.2845,0.4466,0.1912,0.021689803413497803,8.45,-0.084,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race_sex,BLACK|male,not_feasible,insufficient_group_n,171,19,,,,,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race_sex,BLACK|female,computed,,171,23,4.7391,4.7253,0.0138,0.4126,0.9736436400101315,0.29,-0.4944,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race_sex,HISPANIC|male,not_feasible,insufficient_group_n,171,8,,,,,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race_sex,HISPANIC|female,not_feasible,insufficient_group_n,171,19,,,,,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race_sex,"NON-BLACK, NON-HISPANIC|male",computed,,171,51,5.451,5.9108,-0.4598,0.3342,0.17496406837264827,-7.78,0.3726,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education_years,race_sex,"NON-BLACK, NON-HISPANIC|female",computed,,171,51,6.0196,5.5647,0.4549,0.257,0.08287075444686806,8.17,0.1211,1.4038,0.2018,data/processed/cnlsy_cfa_resid.csv

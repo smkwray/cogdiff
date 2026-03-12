@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "cogdiff: Cognitive Differences Across Groups in NLSY79, NLSY97, and CNLSY"
+message: >-
+  If you use this software or results bundle, please cite it using the preferred
+  citation below.
+type: software
+authors:
+  - family-names: Wray
+    given-names: Shane
+license: MIT
+repository-code: https://github.com/smkwray/cogdiff
+abstract: >-
+  Reproducible pipeline for estimating cognitive differences across sex,
+  race/ethnicity, and SES groups using NLSY79, NLSY97, and CNLSY public-use data. Produces publication-ready tables/figures
+  and integrity manifests (see outputs/tables/publication_results_lock.zip).
+  This repository does not ship NLSY microdata; lawful access to the public-use
+  files is required to reproduce the full pipeline. Parts of the code and
+  documentation were developed with AI assistance.
+keywords:
+  - SEM
+  - measurement invariance
+  - bootstrap
+  - NLSY
+preferred-citation:
+  type: software
+  title: "cogdiff: Cognitive Differences Across Groups in NLSY79, NLSY97, and CNLSY"
+  authors:
+    - family-names: Wray
+      given-names: Shane
+  repository-code: https://github.com/smkwray/cogdiff

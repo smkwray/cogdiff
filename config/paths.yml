@@ -1,0 +1,8 @@
+raw_dir: data/raw
+interim_dir: data/interim
+processed_dir: data/processed
+outputs_dir: outputs
+logs_dir: outputs/logs
+manifest_file: data/raw/manifest.json
+sem_interim_dir: data/interim/sem
+links_interim_dir: data/interim/links

@@ -1,0 +1,2 @@
+cohort,status,reason,outcome,n_total,n_with_any_occupation,n_used,n_positive,prevalence,age_col,beta_g,SE_beta_g,p_value_beta_g,odds_ratio_g,beta_age,SE_beta_age,p_value_beta_age,pseudo_r2,source_data
+nlsy97,computed,,management_professional_related,6992,779,752,197,0.261968085106383,age_latest,0.7367846618649811,0.1235289135191866,2.4542737044541616e-09,2.089207195812561,0.010048350950724018,0.023424546637551384,0.6679474436629371,0.04504059249487691,data/processed/nlsy97_cfa_resid.csv

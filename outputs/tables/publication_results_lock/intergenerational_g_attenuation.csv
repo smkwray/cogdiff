@@ -1,0 +1,2 @@
+status,reason,n_pairs_bivariate,n_pairs_ses_controlled,beta_mother_g_bivariate,beta_mother_g_ses_controlled,attenuation_abs,attenuation_pct,r2_bivariate,r2_ses_controlled,delta_r2,beta_parent_ed,source_table
+computed,,115,114,0.4478184292383927,0.4024327704056579,0.04538565883273482,10.13483498433114,0.2321797467427904,0.2302045188700454,-0.001975227872745011,0.0435520596168898,outputs/tables/intergenerational_g_transmission.csv

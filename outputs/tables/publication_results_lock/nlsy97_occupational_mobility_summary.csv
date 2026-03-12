@@ -1,0 +1,2 @@
+cohort,status,reason,n_total,n_with_2plus_occupation_waves,n_with_major_group_start_end,n_changed_major_group,pct_changed_major_group,n_upward_to_management_professional,n_downward_from_management_professional,mean_year_gap,mean_age_start,top_wave_pair,top_start_group,top_end_group,source_data
+nlsy97,computed,,6992,73,72,39,0.5416666666666666,4,10,4.805555555555555,32.52777777777778,2015->2021,service,service,data/processed/nlsy97_cfa_resid.csv

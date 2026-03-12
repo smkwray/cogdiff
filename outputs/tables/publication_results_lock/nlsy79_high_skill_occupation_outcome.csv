@@ -1,0 +1,2 @@
+cohort,status,reason,outcome,n_total,n_used,n_positive,prevalence,age_col,beta_g,SE_beta_g,p_value_beta_g,odds_ratio_g,beta_age,SE_beta_age,p_value_beta_age,pseudo_r2,source_data
+nlsy79,computed,,management_professional_related,9261,5154,2445,0.4743888242142026,age_2000,1.0933432370261023,0.041803479951089274,8.79187971757031e-151,2.984234416385942,0.03397198099366734,0.017226102380766863,0.04859564454402115,0.11577055455129248,data/processed/nlsy79_cfa_resid.csv

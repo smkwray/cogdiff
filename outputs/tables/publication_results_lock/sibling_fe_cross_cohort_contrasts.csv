@@ -1,0 +1,5 @@
+outcome,cohort_a,cohort_b,status,reason,beta_within_a,se_within_a,beta_within_b,se_within_b,diff_b_minus_a,z_diff,p_value_diff,source_table
+earnings,nlsy79,nlsy97,not_feasible,missing_cohort_rows,,,,,,,,outputs/tables/sibling_fe_g_outcome.csv
+education,nlsy79,nlsy97,computed,,2.070260818961428,0.3075980043569583,1.3837596693065508,0.1527783649750782,-0.6865011496548774,-1.9988398927163222,0.0456256799350487,outputs/tables/sibling_fe_g_outcome.csv
+household_income,nlsy79,nlsy97,computed,,28398.2594801359,28665.573966110536,7775.498293282643,2279.6662742864733,-20622.76118685326,-0.7171618238980018,0.4732742520747023,outputs/tables/sibling_fe_g_outcome.csv
+net_worth,nlsy79,nlsy97,computed,,13673.004853823608,91662.41922724128,-10791.442752344405,4852.158557916365,-24464.44760616801,-0.26652409430189866,0.7898356056957612,outputs/tables/sibling_fe_g_outcome.csv

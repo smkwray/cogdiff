@@ -1,0 +1,13 @@
+cohort,outcome,status,reason,family_id_col,n_families,n_individuals,beta_g_total,beta_g_within,se_within,p_within,r2_within,source_data,source_links
+nlsy79,education,computed,,family_id,25,54,1.634406582412201,2.102293757574655,0.3241725093726379,3.274474946342169e-08,0.4620229184919792,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy79,household_income,computed,,family_id,7,15,27939.469453648042,5699.484972276423,29814.467498737453,0.8513495586738397,0.24158525980837064,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy79,net_worth,computed,,family_id,12,24,-13656.563040520588,50447.14082603148,97610.92342723858,0.6104396299487114,0.05046463281017033,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy79,earnings,computed,,family_id,18,38,8524.03473659309,8733.5772404418,1508.8447669768361,1.3333983052435346e-06,0.490963814134207,data/processed/nlsy79_cfa_resid.csv,data/interim/links/links79_links.csv
+nlsy97,education,computed,,family_id,1261,2673,1.8270097329017885,1.4207339706647286,0.15417532013003954,6.119796611142347e-20,0.030897299637528297,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+nlsy97,household_income,computed,,family_id,793,1665,16830.145063896667,6426.487966185287,2294.7860575253912,0.0051617852422032985,0.01630024458747492,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+nlsy97,net_worth,computed,,family_id,825,1736,22598.942374681938,-8523.05353946781,4874.119251754023,0.08053114877081162,0.010534663208286776,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+nlsy97,earnings,not_feasible,missing_outcome_column,family_id,0,0,,,,,,data/processed/nlsy97_cfa_resid.csv,data/interim/links/links97_links.csv
+cnlsy,education,computed,,family_id,6,12,0.3540112390579449,0.41642641795466956,0.8364021699896389,0.6293359468266667,0.024188676053321756,data/processed/cnlsy_cfa_resid.csv,data/interim/links/links_cnlsy_links.csv
+cnlsy,household_income,not_feasible,missing_outcome_column,family_id,0,0,,,,,,data/processed/cnlsy_cfa_resid.csv,data/interim/links/links_cnlsy_links.csv
+cnlsy,net_worth,not_feasible,missing_outcome_column,family_id,0,0,,,,,,data/processed/cnlsy_cfa_resid.csv,data/interim/links/links_cnlsy_links.csv
+cnlsy,earnings,not_feasible,insufficient_linked_family_rows,family_id,0,0,,,,,,data/processed/cnlsy_cfa_resid.csv,data/interim/links/links_cnlsy_links.csv

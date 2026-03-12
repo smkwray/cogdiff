@@ -1,0 +1,3 @@
+cohort,status,reason,d_tilt,se_d_tilt,d_g_proxy,tilt_to_g_ratio_abs,tilt_g_corr,tilt_incremental_r2_education,p_tilt_incremental,incremental_r2_band,tilt_vs_g_band,interpretation,source_tables
+nlsy79,computed,,-0.4252960233771681,0.0210172437742538,0.211279610250462,2.0129534642410585,-0.0067278085551334,0.0023984916114786,2.7145306940071272e-08,very_small,larger_than_g,small_add_on,"outputs/tables/subtest_profile_tilt.csv,outputs/tables/g_proxy_mean_diff_family_bootstrap.csv"
+nlsy97,computed,,-0.1209810464687878,0.023941458191022,0.0490340601191208,2.4672859268615066,-0.0054507375678006,0.000287122932925,0.1353549367160682,negligible,larger_than_g,small_or_null_add_on,"outputs/tables/subtest_profile_tilt.csv,outputs/tables/g_proxy_mean_diff_family_bootstrap.csv"

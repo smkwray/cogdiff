@@ -1,0 +1,3 @@
+model,status,reason,n_pairs,beta_mother_g,se,p,r2,beta_parent_ed,source_child_data,source_mother_data
+bivariate,computed,,115,0.44781842923839277,0.07660909920132813,4.977171102444742e-08,0.2321797467427904,,data/processed/cnlsy_cfa_resid.csv,data/processed/nlsy79_cfa_resid.csv
+ses_controlled,computed,,114,0.4024327704056579,0.08258332154591616,3.68138508337541e-06,0.23020451887004545,0.04355205961688988,data/processed/cnlsy_cfa_resid.csv,data/processed/nlsy79_cfa_resid.csv

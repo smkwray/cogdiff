@@ -1,0 +1,7 @@
+cohort,estimand,analysis_tier,blocked_confirmatory,reason
+nlsy79,d_g,confirmatory,False,
+nlsy79,vr_g,confirmatory,False,
+nlsy97,d_g,exploratory_sensitivity,True,invariance:scalar_gate:failed_delta_cfi
+nlsy97,vr_g,confirmatory,False,
+cnlsy,d_g,exploratory_sensitivity,True,"invariance:scalar_gate:failed_delta_cfi,delta_rmsea"
+cnlsy,vr_g,confirmatory,False,

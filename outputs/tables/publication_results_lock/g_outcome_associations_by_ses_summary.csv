@@ -1,0 +1,13 @@
+cohort,outcome,status,reason,ses_col,ses_mode,n_total,n_bins_used,heterogeneity_Q,heterogeneity_df,heterogeneity_p_value,min_beta_g,max_beta_g,source_data
+nlsy79,earnings,computed,,parent_education,numeric_terciles,7163,3,18.735220198323955,2,8.544735529854552e-05,5713.807863486434,7980.34189568248,data/processed/nlsy79_cfa_resid.csv
+nlsy79,household_income,computed,,parent_education,numeric_terciles,4605,3,25.85484585450162,2,2.4304772341237495e-06,18925.543735983603,34454.93777332271,data/processed/nlsy79_cfa_resid.csv
+nlsy79,net_worth,computed,,parent_education,numeric_terciles,4694,3,35.97013906222382,2,1.5459076488543303e-08,65186.75592410936,169243.03987225317,data/processed/nlsy79_cfa_resid.csv
+nlsy79,education,computed,,parent_education,numeric_terciles,8975,3,39.99394218027244,2,2.067406135345137e-09,1.1385503494544464,1.6265334925893735,data/processed/nlsy79_cfa_resid.csv
+nlsy97,earnings,not_feasible,missing_outcome_column,parent_education,numeric_terciles,0,0,,,,,,data/processed/nlsy97_cfa_resid.csv
+nlsy97,household_income,computed,,parent_education,numeric_terciles,4532,3,2.5979826926863745,2,0.27280682190477473,14903.647592260266,19352.65737062312,data/processed/nlsy97_cfa_resid.csv
+nlsy97,net_worth,computed,,parent_education,numeric_terciles,4610,3,4.145310294603783,2,0.12585118426652117,19596.758068129297,31313.132666628382,data/processed/nlsy97_cfa_resid.csv
+nlsy97,education,computed,,parent_education,numeric_terciles,5969,3,1.2373238509570812,2,0.53866472913499,1.7461888516720672,1.9404622016043371,data/processed/nlsy97_cfa_resid.csv
+cnlsy,earnings,not_feasible,missing_outcome_column,parent_education,numeric_terciles,0,0,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,household_income,not_feasible,missing_outcome_column,parent_education,numeric_terciles,0,0,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,net_worth,not_feasible,missing_outcome_column,parent_education,numeric_terciles,0,0,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,education,computed,,parent_education,numeric_terciles,182,2,0.07267256956636978,1,0.787484539952997,1.3959598375628663,1.5219827337844678,data/processed/cnlsy_cfa_resid.csv

@@ -1,0 +1,130 @@
+cohort: nlsy79
+download_url: https://nlsinfo.org/cohort-data/nlsy79_all_1979-2022.zip
+raw_zip_name: nlsy79_all_1979-2022.zip
+expected_age_range:
+  min: 16
+  max: 23
+pair_rules:
+  relatedness_r: 0.5
+  relationship_path: Gen1Housemates
+sample_construct:
+  input_file: panel_extract.csv
+  id_col: person_id
+  sex_col: sex
+  age_col: age
+  age_resid_col: birth_year
+  subtests: [GS, AR, WK, PC, 'NO', CS, AS, MK, MC, EI]
+  min_tests: 10
+  missing_codes: [-1, -2, -3, -4, -5]
+  column_map:
+    R0000100: person_id
+    R0214700: race_ethnicity_raw
+    R0214800: sex
+    R0216500: age
+    R0000500: birth_year
+    R0006500: mother_education
+    R0007900: father_education
+    R0216100: sample_weight_79
+    R0216101: cross_sectional_weight_79
+    R0614700: sample_weight_81_asvab
+    R3279401: annual_earnings
+    R5165700: sample_weight_96
+    R7006500: household_income
+    R7007501: employment_2000
+    R6541400: degree_2000
+    R6963301: interview_month_2000
+    R6963302: interview_year_2000
+    R6940103: net_worth
+    E6320100: occupation_code_2000_slot01
+    E6320200: occupation_code_2000_slot02
+    E6320300: occupation_code_2000_slot03
+    E6320400: occupation_code_2000_slot04
+    E6320500: occupation_code_2000_slot05
+    E6320600: occupation_code_2000_slot06
+    E6320700: occupation_code_2000_slot07
+    E6320800: occupation_code_2000_slot08
+    E6320900: occupation_code_2000_slot09
+    E6321000: occupation_code_2000_slot10
+    E6321100: occupation_code_2000_slot11
+    E6321200: occupation_code_2000_slot12
+    E6321300: occupation_code_2000_slot13
+    E6321400: occupation_code_2000_slot14
+    E6321500: occupation_code_2000_slot15
+    E6321600: occupation_code_2000_slot16
+    E6321700: occupation_code_2000_slot17
+    E6321800: occupation_code_2000_slot18
+    E6321900: occupation_code_2000_slot19
+    E6322000: occupation_code_2000_slot20
+    E6322100: occupation_code_2000_slot21
+    E6322200: occupation_code_2000_slot22
+    E6322300: occupation_code_2000_slot23
+    E6322400: occupation_code_2000_slot24
+    E6322500: occupation_code_2000_slot25
+    E6322600: occupation_code_2000_slot26
+    E6322700: occupation_code_2000_slot27
+    E6322800: occupation_code_2000_slot28
+    E6322900: occupation_code_2000_slot29
+    E6323000: occupation_code_2000_slot30
+    E6323100: occupation_code_2000_slot31
+    E6323200: occupation_code_2000_slot32
+    E6323300: occupation_code_2000_slot33
+    E6323400: occupation_code_2000_slot34
+    E6323500: occupation_code_2000_slot35
+    E6323600: occupation_code_2000_slot36
+    E6323700: occupation_code_2000_slot37
+    E6323800: occupation_code_2000_slot38
+    E6323900: occupation_code_2000_slot39
+    E6324000: occupation_code_2000_slot40
+    E6324100: occupation_code_2000_slot41
+    E6324200: occupation_code_2000_slot42
+    E6324300: occupation_code_2000_slot43
+    E6324400: occupation_code_2000_slot44
+    E6324500: occupation_code_2000_slot45
+    E6324600: occupation_code_2000_slot46
+    # 1980 self-report delinquency (past-year counts, age 16-23)
+    R0304900: delin_property_damage
+    R0305000: delin_fighting
+    R0305100: delin_shoplifting
+    R0305200: delin_theft_under50
+    R0305300: delin_theft_over50
+    R0305400: delin_used_force
+    R0305500: delin_threatened
+    R0305600: delin_attacked
+    R0305900: delin_sold_marijuana
+    R0306000: delin_sold_hard_drugs
+    R0306200: delin_auto_theft
+    R0306300: delin_burglary
+    R0306400: delin_fencing
+    R0306600: delin_illegal_income
+    # Health and substance use
+    H0003400: health_status_40plus
+    T8114300: smoking_daily_2018
+    T8115000: alcohol_days_30_2018
+    R1395700: marijuana_use_30_1984
+    R1773900: height_inches_1985
+    T9180100: weight_pounds_2022
+    # Mental health / psychological
+    R0304410: rosenberg_self_esteem_1980
+    R0153710: rotter_locus_control_1979
+    T9186300: cesd_score_2022
+    # Family formation (year 2000)
+    R7007000: marital_status_2000
+    R7015300: age_first_marriage_2000
+    R7014100: num_children_2000
+    R7014400: age_first_birth_2000
+    # Welfare and housing (year 2000)
+    G0174300: food_stamps_amount_2000
+    G0171700: afdc_amount_2000
+    R6944300: homeowner_2000
+    T9900000: education_years
+    T9900100: highest_degree_ever
+    R0616000: GS
+    R0616200: AR
+    R0616400: WK
+    R0616600: PC
+    R0616800: 'NO'
+    R0617000: CS
+    R0617200: AS
+    R0617400: MK
+    R0617600: MC
+    R0617800: EI

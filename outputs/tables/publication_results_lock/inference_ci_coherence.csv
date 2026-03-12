@@ -1,0 +1,13 @@
+cohort,inference_method,estimate_type,status,estimate,ci_low,ci_high,ci_contains_estimate,issue
+cnlsy,family_bootstrap,d_g,missing_source,,,,,non_computed_status_missing_source
+cnlsy,family_bootstrap,vr_g,missing_source,,,,,non_computed_status_missing_source
+cnlsy,robust_cluster,d_g,baseline_missing,,,,,non_computed_status_baseline_missing
+cnlsy,robust_cluster,vr_g,computed,1.120192580158,,,,computed_missing_ci_or_estimate
+nlsy79,family_bootstrap,d_g,computed,0.305101051985951,-0.1036018036305599,0.359090666762472,True,contains_estimate
+nlsy79,family_bootstrap,vr_g,computed,1.31059540705497,0.7272991285720992,1.3722435539942877,True,contains_estimate
+nlsy79,robust_cluster,d_g,computed,0.305101051985951,0.2415411050544308,0.3686609989174711,True,contains_estimate
+nlsy79,robust_cluster,vr_g,computed,1.31059540705497,,,,computed_missing_ci_or_estimate
+nlsy97,family_bootstrap,d_g,computed,0.0009647393075063,-0.0256771635602229,0.0257038378049262,True,contains_estimate
+nlsy97,family_bootstrap,vr_g,computed,1.2458548846301831,0.7876721378098106,1.3064519513496915,True,contains_estimate
+nlsy97,robust_cluster,d_g,baseline_missing,,,,,non_computed_status_baseline_missing
+nlsy97,robust_cluster,vr_g,computed,1.2458548846301831,1.1659203318909337,1.331269685502049,True,contains_estimate

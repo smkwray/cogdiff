@@ -1,0 +1,4 @@
+cohort,blocked_confirmatory,blocked_confirmatory_d_g,blocked_confirmatory_vr_g,reason,reason_d_g,reason_vr_g
+nlsy79,False,False,False,,,
+nlsy97,False,True,False,invariance:scalar_gate:failed_delta_cfi,invariance:scalar_gate:failed_delta_cfi,
+cnlsy,False,True,False,"invariance:scalar_gate:failed_delta_cfi,delta_rmsea","invariance:scalar_gate:failed_delta_cfi,delta_rmsea",

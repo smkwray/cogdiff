@@ -1,0 +1,7 @@
+required_paths:
+  nlsy79:
+    - data/interim/links/links79_pair_expanded.csv
+required_r_packages:
+  - jsonlite
+  - lavaan
+  - NlsyLinks

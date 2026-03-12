@@ -1,0 +1,4 @@
+cohort,status,reason,g_construct,race_col,n_total,n_groups_total,n_groups_used,heterogeneity_Q,heterogeneity_df,heterogeneity_p_value,mean_d_across_race_groups,mean_d_g_proxy_across_race_groups,min_d_race_group,max_d_race_group,source_data
+nlsy79,computed,,g_proxy,race_ethnicity_3cat,9261,3,3,25.533502286021736,2,2.854108156944402e-06,0.30102275796674943,0.30102275796674943,0.12452954866323392,0.3739932214741641,data/processed/nlsy79_cfa_resid.csv
+nlsy97,computed,,g_proxy,race_ethnicity_3cat,6992,3,3,26.44684830445722,2,1.8077561963679386e-06,0.0462986670774053,0.0462986670774053,-0.15855032517688541,0.1359976359900385,data/processed/nlsy97_cfa_resid.csv
+cnlsy,computed,,g_proxy,race_ethnicity_3cat,183,3,3,0.25002620299181166,2,0.8824853406307789,0.37087754607855955,0.37087754607855955,0.22869610694049827,0.4725072853618391,data/processed/cnlsy_cfa_resid.csv

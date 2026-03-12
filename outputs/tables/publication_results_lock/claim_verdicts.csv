@@ -1,0 +1,7 @@
+claim_id,claim_label,verdict,reason,cohorts_evaluated,thresholds_used
+cnlsy:d_g:unweighted_vs_weighted,claim:cnlsy:d_g:unweighted_vs_weighted,not_confirmed,blocked_confirmatory: cnlsy:d_g,cnlsy,{}
+cnlsy:log_vr_g:unweighted_vs_weighted,claim:cnlsy:log_vr_g:unweighted_vs_weighted,inconclusive,missing_discrepancy_delta_for_threshold_check: cnlsy:log_vr_g,cnlsy,"{""primary_deviation_threshold"": 0.2}"
+nlsy79:d_g:unweighted_vs_weighted,claim:nlsy79:d_g:unweighted_vs_weighted,not_confirmed,robust_claim_eligible=false: nlsy79:d_g,nlsy79,"{""primary_deviation_threshold"": 0.2}"
+nlsy79:log_vr_g:unweighted_vs_weighted,claim:nlsy79:log_vr_g:unweighted_vs_weighted,confirmed,robust_claim_eligible=true: nlsy79:log_vr_g,nlsy79,"{""primary_deviation_threshold"": 0.2}"
+nlsy97:d_g:unweighted_vs_weighted,claim:nlsy97:d_g:unweighted_vs_weighted,not_confirmed,blocked_confirmatory: nlsy97:d_g,nlsy97,{}
+nlsy97:log_vr_g:unweighted_vs_weighted,claim:nlsy97:log_vr_g:unweighted_vs_weighted,confirmed,robust_claim_eligible=true: nlsy97:log_vr_g,nlsy97,"{""primary_deviation_threshold"": 0.2}"

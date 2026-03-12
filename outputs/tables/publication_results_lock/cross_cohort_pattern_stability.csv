@@ -1,0 +1,3 @@
+estimand,status,reason,n_cohorts,cohorts,mean_estimate,sd_estimate,range_estimate,cv_estimate,source_estimates
+d_g,computed,,1,nlsy79,0.305101051985951,0.0,0.0,0.0,outputs/tables/g_mean_diff.csv
+vr_g,computed,,3,"nlsy79,nlsy97,cnlsy",1.2255476239477179,0.09681217769427865,0.19040282689696997,0.07899503520102184,outputs/tables/g_variance_ratio.csv

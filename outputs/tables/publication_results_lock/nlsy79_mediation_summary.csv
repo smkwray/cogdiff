@@ -1,0 +1,11 @@
+cohort,status,reason,outcome,model,mediators_in_model,n_used,beta_g_baseline,beta_g_model,pct_attenuation_g,delta_r2,source_data
+nlsy79,computed,,log_annual_earnings,baseline,baseline,5475,1.2559448693918767,1.2559448693918767,0.0,0.0,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_annual_earnings,plus_education_years,education_years,5475,1.2559448693918767,1.1794914319125254,6.087324319925741,0.0006266979348580337,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_annual_earnings,plus_employment_2000,employment_2000,5464,1.2540090206792187,1.045306926052899,16.642790536967482,0.055469524365791,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_annual_earnings,plus_job_zone,__job_zone,2940,0.9405603254427474,0.9659261943299547,-2.696889099087501,0.0004685332052810631,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_annual_earnings,plus_all_mediators,education_years;employment_2000;__job_zone,2936,0.9415983285032039,0.875807496870647,6.9871440550601065,0.014825562074391452,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_household_income,baseline,baseline,4736,0.8862495281421311,0.8862495281421311,0.0,0.0,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_household_income,plus_education_years,education_years,4736,0.8862495281421311,0.7172632258785077,19.06757599272002,0.010762428542074653,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_household_income,plus_employment_2000,employment_2000,4725,0.8870166132632114,0.7533241531525888,15.072148380489342,0.07309210064632621,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_household_income,plus_job_zone,__job_zone,2540,0.5800074074046702,0.5363501438139354,7.527018281729485,0.007800826752234147,data/processed/nlsy79_cfa_resid.csv
+nlsy79,computed,,log_household_income,plus_all_mediators,education_years;employment_2000;__job_zone,2534,0.580811480084848,0.4117509368538018,29.10764491196849,0.04026174519946801,data/processed/nlsy79_cfa_resid.csv

@@ -1,0 +1,4 @@
+cohort,status,reason,g_construct,ses_col,ses_mode,n_total,n_bins_total,n_bins_used,heterogeneity_Q,heterogeneity_df,heterogeneity_p_value,mean_d_across_ses_bins,mean_d_g_proxy_across_ses_bins,min_d_ses_bin,max_d_ses_bin,source_data
+nlsy79,computed,,g_proxy,household_income,numeric_terciles,4736,3,3,29.027540471354623,2,4.974502747087448e-07,0.2917586143141822,0.2917586143141822,0.08828023293777215,0.4741083048836034,data/processed/nlsy79_cfa_resid.csv
+nlsy97,computed,,g_proxy,household_income,numeric_terciles,5213,3,3,0.34158221734968464,2,0.8429976499767609,0.09567951455049323,0.09567951455049323,0.07277472885753003,0.10826138015436451,data/processed/nlsy97_cfa_resid.csv
+cnlsy,computed,,g_proxy,parent_education,numeric_terciles,182,3,3,2.2140786498125533,2,0.3305361239001925,0.35747396442341933,0.35747396442341933,0.04331767207692569,0.5388536232527479,data/processed/cnlsy_cfa_resid.csv

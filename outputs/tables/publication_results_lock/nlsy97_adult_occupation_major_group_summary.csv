@@ -1,0 +1,7 @@
+cohort,status,reason,occupation_group,occupation_group_label,n_total,n_with_any_occupation,n_used,share_used,mean_g_proxy,mean_education_years,mean_age_at_occupation,top_source_wave,source_data
+nlsy97,computed,,management_professional_related,Management/professional/related,6992,779,197,0.261968085106383,0.36246639742615194,15.766497461928934,34.51269035532995,2013,data/processed/nlsy97_cfa_resid.csv
+nlsy97,computed,,service,Service,6992,779,148,0.19680851063829788,0.07023087820209177,13.804054054054054,34.25,2013,data/processed/nlsy97_cfa_resid.csv
+nlsy97,computed,,sales_office,Sales/office,6992,779,78,0.10372340425531915,-0.07329001735707769,13.012987012987013,34.87179487179487,2015,data/processed/nlsy97_cfa_resid.csv
+nlsy97,computed,,farming_fishing_forestry,Farming/fishing/forestry,6992,779,134,0.17819148936170212,-0.006890159784472916,14.545454545454545,34.582089552238806,2013,data/processed/nlsy97_cfa_resid.csv
+nlsy97,computed,,construction_maintenance,Construction/extraction/maintenance,6992,779,78,0.10372340425531915,-0.06614065474077414,12.961538461538462,34.666666666666664,2019,data/processed/nlsy97_cfa_resid.csv
+nlsy97,computed,,production_transport,Production/transport/material moving,6992,779,117,0.15558510638297873,-0.04834747962085653,13.791304347826086,34.136752136752136,2013,data/processed/nlsy97_cfa_resid.csv

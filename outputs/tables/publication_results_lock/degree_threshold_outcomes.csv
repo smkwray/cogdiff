@@ -1,0 +1,7 @@
+cohort,threshold,threshold_years,status,reason,n_total,n_used,n_positive,prevalence,beta_g,SE_beta_g,p_value_beta_g,odds_ratio_g,pseudo_r2,source_data
+nlsy79,ba_or_more,16,computed,,9261,5794,1381,0.2383500172592337,1.6720807961489887,0.054508101657611864,1.1962493728055628e-206,5.323232843536874,0.2121179002276048,data/processed/nlsy79_cfa_resid.csv
+nlsy79,graduate_or_more,18,computed,,9261,5794,488,0.08422506040731792,1.5587629740829874,0.07815203730490781,1.6477978008134175e-88,4.752938099475233,0.15957767734768502,data/processed/nlsy79_cfa_resid.csv
+nlsy97,ba_or_more,16,computed,,6992,5304,2106,0.39705882352941174,1.471756528448673,0.049088735085221956,1.707466125482061e-197,4.356881409796287,0.17533714761789376,data/processed/nlsy97_cfa_resid.csv
+nlsy97,graduate_or_more,18,computed,,6992,5304,931,0.17552790346907993,1.2021889314860328,0.05680048900931135,2.0026945575216236e-99,3.3273923910518857,0.11301153033435485,data/processed/nlsy97_cfa_resid.csv
+cnlsy,ba_or_more,16,not_feasible,insufficient_outcome_class_counts,545,171,0,,,,,,,data/processed/cnlsy_cfa_resid.csv
+cnlsy,graduate_or_more,18,not_feasible,insufficient_outcome_class_counts,545,171,0,,,,,,,data/processed/cnlsy_cfa_resid.csv

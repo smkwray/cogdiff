@@ -1,0 +1,5 @@
+cohort,outcome,model_type,status,reason,n_baseline,n_mother_ses,beta_g_baseline,beta_g_mother_ses,odds_ratio_g_baseline,odds_ratio_g_mother_ses,attenuation_abs,attenuation_pct,delta_r2_or_pseudo_r2,source_data
+cnlsy,log_wage_income_2014,ols_log_income,computed,,154,153,0.5816985031227604,0.6755572825494945,,,-0.09385877942673415,-16.135296708323555,0.005251166239218286,data/processed/cnlsy_cfa_resid.csv
+cnlsy,log_family_income_2014,ols_log_income,computed,,69,69,0.8312481240250091,0.8150354842609514,,,0.016212639764057735,1.9503971552505974,0.017786315562638433,data/processed/cnlsy_cfa_resid.csv
+cnlsy,num_current_jobs_2014,ols_count_like,computed,,171,170,-0.007439661539849854,-0.010178552809579142,,,0.0027388912697292878,-36.81472947470355,0.00016255596666803207,data/processed/cnlsy_cfa_resid.csv
+cnlsy,degree_any_2014,logit_binary,not_feasible,baseline=insufficient_class_counts;mother_ses=insufficient_class_counts,,,,,,,,,,data/processed/cnlsy_cfa_resid.csv

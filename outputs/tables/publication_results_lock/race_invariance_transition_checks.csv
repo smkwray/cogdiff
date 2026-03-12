@@ -1,0 +1,7 @@
+cohort,status,reason,transition,prev_step,next_step,delta_cfi,delta_rmsea,delta_srmr,delta_cfi_min,delta_rmsea_max,delta_srmr_max,evaluated_criteria,passed,check_source,fit_dir
+nlsy79,computed,failed_delta_cfi,configural->metric,configural,metric,-0.012221646631935035,-0.0017874924272190118,0.029263039305545697,-0.01,0.015,0.03,3,False,baseline,outputs/model_fits/race_invariance/nlsy79
+nlsy79,computed,,metric->scalar,metric,scalar,-0.0053365350826349855,-0.0017892093115750018,0.005033501554268599,-0.01,0.015,0.015,3,True,baseline,outputs/model_fits/race_invariance/nlsy79
+nlsy97,computed,,configural->metric,configural,metric,-0.0007167064335260598,-0.01039197400711199,0.002821587858718902,-0.01,0.015,0.03,3,True,baseline,outputs/model_fits/race_invariance/nlsy97
+nlsy97,computed,,metric->scalar,metric,scalar,-0.009176995179233982,0.001551575415060999,0.011575535465053001,-0.01,0.015,0.015,3,True,baseline,outputs/model_fits/race_invariance/nlsy97
+cnlsy,computed,,configural->metric,configural,metric,0.007224324323422016,-0.0447440896628099,0.006354850497893999,-0.01,0.015,0.03,3,True,baseline,outputs/model_fits/race_invariance/cnlsy
+cnlsy,computed,failed_delta_rmsea,metric->scalar,metric,scalar,-0.0051106684188669815,0.0261782550280031,0.009530802287816303,-0.01,0.015,0.015,3,False,baseline,outputs/model_fits/race_invariance/cnlsy
