@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Outcomes &mdash; cogdiff</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">cog<span class="logo-accent">diff</span></a>
+    <div class="header-controls">
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <button id="themeToggle" class="theme-toggle" onclick="cdToggleTheme()" aria-label="Toggle theme">&#9790;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="measurement.html">Measurement</a></li>
+        <li><a href="outcomes.html" class="active">Outcomes</a></li>
+        <li><a href="subgroups.html">Subgroups</a></li>
+        <li><a href="family.html">Family</a></li>
+        <li><a href="methodology.html">Methods</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Main Content ─────────────────────────────────────────── -->
+<main class="content">
+
+  <h1>Outcome Associations</h1>
+  <p class="page-intro">How g<sub>proxy</sub> (observed cognitive composite) associates with education, employment, earnings, wealth, health, crime, and family outcomes across NLSY cohorts.</p>
+
+  <!-- ── 1. Education ─────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Education</h2>
+      <span class="section-tag">Attainment</span>
+    </div>
+
+    <div class="chart-container">
+      <h3>Odds of Degree Attainment per SD of g<sub>proxy</sub></h3>
+      <p class="chart-subtitle">Logistic regression odds ratios for reaching each education threshold, per one standard-deviation increase in the cognitive composite.</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartEducation"></canvas>
+      </div>
+      <p class="chart-note">All p &lt; 1e-88. Pseudo R&sup2; values reflect Nagelkerke R&sup2; from logistic models.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Threshold</th>
+          <th class="num">N</th>
+          <th class="num">Prevalence</th>
+          <th class="num">OR</th>
+          <th class="num">Pseudo R&sup2;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NLSY79</td>
+          <td>BA+</td>
+          <td class="num">5,794</td>
+          <td class="num">23.8%</td>
+          <td class="num highlight">5.32</td>
+          <td class="num">0.212</td>
+        </tr>
+        <tr>
+          <td>NLSY79</td>
+          <td>Graduate+</td>
+          <td class="num">5,794</td>
+          <td class="num">8.4%</td>
+          <td class="num highlight">4.75</td>
+          <td class="num">0.160</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>BA+</td>
+          <td class="num">5,304</td>
+          <td class="num">39.7%</td>
+          <td class="num highlight">4.36</td>
+          <td class="num">0.175</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Graduate+</td>
+          <td class="num">5,304</td>
+          <td class="num">17.6%</td>
+          <td class="num highlight">3.33</td>
+          <td class="num">0.113</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 2. Employment ────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Employment</h2>
+      <span class="section-tag">Labor Force</span>
+    </div>
+
+    <div class="chart-container">
+      <h3>Employment Odds Ratio per SD of g<sub>proxy</sub></h3>
+      <p class="chart-subtitle">Odds of being employed at the survey wave, per SD increase in the cognitive composite.</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartEmployment"></canvas>
+      </div>
+      <p class="chart-note">NLSY79 measured at ages 36&ndash;43; NLSY97 measured at ages 27&ndash;31.</p>
+    </div>
+  </section>
+
+  <!-- ── 3. Earnings & Wealth ─────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Earnings &amp; Wealth</h2>
+      <span class="section-tag">Economic</span>
+    </div>
+
+    <div class="chart-container">
+      <h3>Per-SD Returns to Cognitive Ability</h3>
+      <p class="chart-subtitle">OLS beta coefficients: dollar increase in each outcome per one SD of g<sub>proxy</sub>.</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartEarnings"></canvas>
+      </div>
+      <p class="chart-note">All models include age controls. Net worth and household income measured at most recent available wave.</p>
+    </div>
+
+    <h3>Cross-Cohort Earnings Comparison (Age 36&ndash;40)</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Outcome</th>
+          <th class="num">NLSY79 &beta;/SD</th>
+          <th class="num">NLSY97 &beta;/SD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Earnings</td>
+          <td class="num">$7,370</td>
+          <td class="num highlight">$22,290</td>
+        </tr>
+        <tr>
+          <td>Household income</td>
+          <td class="num">$29,208</td>
+          <td class="num highlight">$38,531</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">
+      <p><strong>Key finding:</strong> The per-SD earnings return roughly tripled from NLSY79 to NLSY97 at comparable ages.</p>
+    </div>
+  </section>
+
+  <!-- ── 4. Occupation ────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Occupation</h2>
+      <span class="section-tag">Job Type</span>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Occupation Group</th>
+          <th class="num">Mean g<sub>proxy</sub></th>
+          <th class="num">Mean Education (yr)</th>
+          <th class="num">Mean HH Income</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Management / professional</td>
+          <td class="num highlight">0.32</td>
+          <td class="num">14.7</td>
+          <td class="num">$74,749</td>
+        </tr>
+        <tr>
+          <td>Service</td>
+          <td class="num">&minus;0.10</td>
+          <td class="num">13.0</td>
+          <td class="num">$48,326</td>
+        </tr>
+        <tr>
+          <td>Sales / office</td>
+          <td class="num">&minus;0.08</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>Farming</td>
+          <td class="num">&minus;0.07</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>Construction / extraction</td>
+          <td class="num">&minus;0.44</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>Production / transport</td>
+          <td class="num">&minus;0.45</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="chart-container">
+      <h3>Mean g<sub>proxy</sub> by Occupation Group (NLSY79)</h3>
+      <p class="chart-subtitle">Horizontal bars sorted by mean g<sub>proxy</sub> score.</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartOccupation"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 5. Crime & Justice ───────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Crime &amp; Justice</h2>
+      <span class="section-tag">NLSY97</span>
+    </div>
+
+    <div class="chart-container">
+      <h3>Crime/Justice Odds Ratios per SD of g<sub>proxy</sub></h3>
+      <p class="chart-subtitle">OR &lt; 1 means higher g<sub>proxy</sub> is associated with lower odds of the outcome.</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartCrime"></canvas>
+      </div>
+      <p class="chart-note">Source: NLSY97. All items measured as ever-report through most recent wave.</p>
+    </div>
+  </section>
+
+  <!-- ── 6. Health ────────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Health</h2>
+      <span class="section-tag">NLSY79 + NLSY97</span>
+    </div>
+
+    <div class="chart-container">
+      <h3>Health &amp; Substance Odds Ratios per SD</h3>
+      <p class="chart-subtitle">Logistic regression ORs. OR &lt; 1 indicates higher g<sub>proxy</sub> is associated with lower odds.</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartHealth"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 7. Family Formation ──────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Family Formation</h2>
+      <span class="section-tag">Demographics</span>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Outcome</th>
+          <th class="num">OR / &beta;</th>
+          <th class="num">Unit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NLSY79</td>
+          <td>Ever married</td>
+          <td class="num highlight">1.779</td>
+          <td class="num">OR per SD</td>
+        </tr>
+        <tr>
+          <td>NLSY79</td>
+          <td>Ever divorced</td>
+          <td class="num">0.729</td>
+          <td class="num">OR per SD</td>
+        </tr>
+        <tr>
+          <td>NLSY79</td>
+          <td>Has children</td>
+          <td class="num">0.786</td>
+          <td class="num">OR per SD</td>
+        </tr>
+        <tr>
+          <td>NLSY79</td>
+          <td>Age at first birth</td>
+          <td class="num highlight">2.79</td>
+          <td class="num">years per SD</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Ever married</td>
+          <td class="num highlight">1.561</td>
+          <td class="num">OR per SD</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Age at first birth</td>
+          <td class="num highlight">2.86</td>
+          <td class="num">years per SD</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 8. Mediation ─────────────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Mediation</h2>
+      <span class="section-tag">NLSY79</span>
+    </div>
+
+    <div class="chart-container">
+      <h3>Mediation of g &rarr; Log Earnings (NLSY79)</h3>
+      <p class="chart-subtitle">Sequential addition of mediators. Bars show the beta coefficient for g<sub>proxy</sub> on log annual earnings after controlling for each set of mediators.</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartMediation"></canvas>
+      </div>
+      <p class="chart-note">Percentages show cumulative attenuation from the baseline. Job zone acts as a suppressor (&minus;2.7%), meaning its inclusion increases the g coefficient. Most of the g&ndash;earnings association operates outside education, employment, and job complexity.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>cogdiff &middot; MIT License</span>
+    <span>Data: NLSY79, NLSY97, CNLSY (NLS program, BLS)</span>
+  </div>
+</footer>
+
+<!-- ── Charts ──────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  cdChartDefaults();
+
+  var charts = {};
+
+  function buildCharts() {
+    var C = cdColors();
+
+    // Destroy existing charts
+    Object.keys(charts).forEach(function (k) {
+      if (charts[k]) { charts[k].destroy(); charts[k] = null; }
+    });
+
+    // Re-apply defaults for current theme
+    cdChartDefaults();
+
+    // ── 1. Education: Degree Attainment ──
+    var ctxEdu = document.getElementById('chartEducation');
+    if (ctxEdu) {
+      charts.education = new Chart(ctxEdu.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['BA+', 'Graduate+'],
+          datasets: [
+            {
+              label: 'NLSY79',
+              data: [5.32, 4.75],
+              backgroundColor: C.nlsy79,
+              borderColor: C.nlsy79,
+              borderWidth: 1,
+              borderRadius: 4,
+              barPercentage: 0.7,
+              categoryPercentage: 0.6
+            },
+            {
+              label: 'NLSY97',
+              data: [4.36, 3.33],
+              backgroundColor: C.nlsy97,
+              borderColor: C.nlsy97,
+              borderWidth: 1,
+              borderRadius: 4,
+              barPercentage: 0.7,
+              categoryPercentage: 0.6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 20 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: 'Odds Ratio',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { color: C.textSec, usePointStyle: true, pointStyle: 'rectRounded' }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  return ctx.dataset.label + ': OR = ' + ctx.parsed.y.toFixed(2);
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'eduBarLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            chart.data.datasets.forEach(function (ds, di) {
+              var meta = chart.getDatasetMeta(di);
+              meta.data.forEach(function (bar, i) {
+                ctx2.save();
+                ctx2.fillStyle = C.text;
+                ctx2.font = '600 12px ' + Chart.defaults.font.family;
+                ctx2.textAlign = 'center';
+                ctx2.textBaseline = 'bottom';
+                ctx2.fillText(ds.data[i].toFixed(2), bar.x, bar.y - 4);
+                ctx2.restore();
+              });
+            });
+          }
+        }]
+      });
+    }
+
+    // ── 2. Employment ──
+    var ctxEmp = document.getElementById('chartEmployment');
+    if (ctxEmp) {
+      charts.employment = new Chart(ctxEmp.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['NLSY79 (age 36\u201343)', 'NLSY97 (age 27\u201331)'],
+          datasets: [{
+            label: 'OR per SD',
+            data: [1.90, 2.07],
+            backgroundColor: [C.nlsy79, C.nlsy97],
+            borderColor: [C.nlsy79, C.nlsy97],
+            borderWidth: 1,
+            borderRadius: 4,
+            barPercentage: 0.5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2.2,
+          layout: { padding: { top: 20 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              beginAtZero: true,
+              max: 2.5,
+              title: {
+                display: true,
+                text: 'Odds Ratio',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  return 'OR = ' + ctx.parsed.y.toFixed(2);
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'empBarLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            chart.data.datasets[0].data.forEach(function (val, i) {
+              var meta = chart.getDatasetMeta(0);
+              var bar = meta.data[i];
+              ctx2.save();
+              ctx2.fillStyle = C.text;
+              ctx2.font = '600 13px ' + Chart.defaults.font.family;
+              ctx2.textAlign = 'center';
+              ctx2.textBaseline = 'bottom';
+              ctx2.fillText(val.toFixed(2), bar.x, bar.y - 6);
+              ctx2.restore();
+            });
+          }
+        }]
+      });
+    }
+
+    // ── 3. Earnings & Wealth ──
+    var ctxEarn = document.getElementById('chartEarnings');
+    if (ctxEarn) {
+      charts.earnings = new Chart(ctxEarn.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Earnings', 'HH Income', 'Net Worth'],
+          datasets: [
+            {
+              label: 'NLSY79',
+              data: [4928, 23146, 107337],
+              backgroundColor: C.nlsy79,
+              borderColor: C.nlsy79,
+              borderWidth: 1,
+              borderRadius: 4,
+              barPercentage: 0.7,
+              categoryPercentage: 0.6
+            },
+            {
+              label: 'NLSY97',
+              data: [null, 21125, 28069],
+              backgroundColor: C.nlsy97,
+              borderColor: C.nlsy97,
+              borderWidth: 1,
+              borderRadius: 4,
+              barPercentage: 0.7,
+              categoryPercentage: 0.6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 20 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: '\u03B2 (dollars per SD)',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: {
+                color: C.textSec,
+                callback: function (v) {
+                  return '$' + v.toLocaleString();
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { color: C.textSec, usePointStyle: true, pointStyle: 'rectRounded' }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  if (ctx.parsed.y == null) return '';
+                  return ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString();
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'earnBarLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            chart.data.datasets.forEach(function (ds, di) {
+              var meta = chart.getDatasetMeta(di);
+              meta.data.forEach(function (bar, i) {
+                var val = ds.data[i];
+                if (val == null) return;
+                ctx2.save();
+                ctx2.fillStyle = C.text;
+                ctx2.font = '600 11px ' + Chart.defaults.font.family;
+                ctx2.textAlign = 'center';
+                ctx2.textBaseline = 'bottom';
+                ctx2.fillText('$' + val.toLocaleString(), bar.x, bar.y - 4);
+                ctx2.restore();
+              });
+            });
+          }
+        }]
+      });
+    }
+
+    // ── 4. Occupation: horizontal bar ──
+    var ctxOcc = document.getElementById('chartOccupation');
+    if (ctxOcc) {
+      var occLabels = [
+        'Management / professional',
+        'Sales / office',
+        'Farming',
+        'Service',
+        'Construction / extraction',
+        'Production / transport'
+      ];
+      var occValues = [0.32, -0.08, -0.07, -0.10, -0.44, -0.45];
+      // Sort by g_proxy descending
+      var occPairs = occLabels.map(function (l, i) { return { label: l, value: occValues[i] }; });
+      occPairs.sort(function (a, b) { return b.value - a.value; });
+
+      charts.occupation = new Chart(ctxOcc.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: occPairs.map(function (p) { return p.label; }),
+          datasets: [{
+            label: 'Mean g proxy',
+            data: occPairs.map(function (p) { return p.value; }),
+            backgroundColor: occPairs.map(function (p) {
+              return p.value >= 0 ? C.nlsy79 : C.muted;
+            }),
+            borderColor: occPairs.map(function (p) {
+              return p.value >= 0 ? C.nlsy79 : C.muted;
+            }),
+            borderWidth: 1,
+            borderRadius: 4,
+            barPercentage: 0.65
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.6,
+          layout: { padding: { right: 40 } },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Mean g proxy (SD units)',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 500 } }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  return 'Mean g proxy = ' + ctx.parsed.x.toFixed(2);
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'occBarLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            var meta = chart.getDatasetMeta(0);
+            meta.data.forEach(function (bar, i) {
+              var val = chart.data.datasets[0].data[i];
+              ctx2.save();
+              ctx2.fillStyle = C.text;
+              ctx2.font = '600 12px ' + Chart.defaults.font.family;
+              ctx2.textBaseline = 'middle';
+              if (val >= 0) {
+                ctx2.textAlign = 'left';
+                ctx2.fillText(val.toFixed(2), bar.x + 6, bar.y);
+              } else {
+                ctx2.textAlign = 'right';
+                ctx2.fillText(val.toFixed(2), bar.x - 6, bar.y);
+              }
+              ctx2.restore();
+            });
+          }
+        }]
+      });
+    }
+
+    // ── 5. Crime & Justice: horizontal bar ──
+    var ctxCrime = document.getElementById('chartCrime');
+    if (ctxCrime) {
+      var crimeLabels = ['Ever arrested', 'Ever incarcerated', 'Ever attacked someone', 'Ever stolen', 'Ever sold drugs'];
+      var crimeORs = [0.653, 0.483, 0.672, 1.044, 0.901];
+
+      charts.crime = new Chart(ctxCrime.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: crimeLabels,
+          datasets: [{
+            label: 'OR per SD',
+            data: crimeORs,
+            backgroundColor: crimeORs.map(function (v) {
+              return v < 1 ? C.nlsy97 : C.muted;
+            }),
+            borderColor: crimeORs.map(function (v) {
+              return v < 1 ? C.nlsy97 : C.muted;
+            }),
+            borderWidth: 1,
+            borderRadius: 4,
+            barPercentage: 0.6
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 1.8,
+          layout: { padding: { right: 40 } },
+          scales: {
+            x: {
+              min: 0,
+              max: 1.2,
+              title: {
+                display: true,
+                text: 'Odds Ratio per SD',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 500 } }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  return 'OR = ' + ctx.parsed.x.toFixed(3);
+                }
+              }
+            },
+            annotation: {
+              annotations: {
+                refLine: {
+                  type: 'line',
+                  xMin: 1,
+                  xMax: 1,
+                  borderColor: C.textSec,
+                  borderWidth: 1,
+                  borderDash: [4, 4]
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'crimeBarLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            var meta = chart.getDatasetMeta(0);
+            meta.data.forEach(function (bar, i) {
+              var val = chart.data.datasets[0].data[i];
+              ctx2.save();
+              ctx2.fillStyle = C.text;
+              ctx2.font = '600 12px ' + Chart.defaults.font.family;
+              ctx2.textAlign = 'left';
+              ctx2.textBaseline = 'middle';
+              ctx2.fillText(val.toFixed(3), bar.x + 6, bar.y);
+              ctx2.restore();
+            });
+          }
+        },
+        {
+          id: 'crimeRefLine',
+          beforeDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            var xScale = chart.scales.x;
+            var yScale = chart.scales.y;
+            var x1 = xScale.getPixelForValue(1);
+            ctx2.save();
+            ctx2.strokeStyle = C.textSec;
+            ctx2.lineWidth = 1;
+            ctx2.setLineDash([4, 4]);
+            ctx2.beginPath();
+            ctx2.moveTo(x1, yScale.top);
+            ctx2.lineTo(x1, yScale.bottom);
+            ctx2.stroke();
+            ctx2.restore();
+          }
+        }]
+      });
+    }
+
+    // ── 6. Health: grouped bar ──
+    var ctxHealth = document.getElementById('chartHealth');
+    if (ctxHealth) {
+      charts.health = new Chart(ctxHealth.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['Fair/poor health', 'Current smoker', 'Obese', 'Binge drinker'],
+          datasets: [
+            {
+              label: 'NLSY79',
+              data: [0.442, 0.750, 0.742, null],
+              backgroundColor: C.nlsy79,
+              borderColor: C.nlsy79,
+              borderWidth: 1,
+              borderRadius: 4,
+              barPercentage: 0.7,
+              categoryPercentage: 0.6
+            },
+            {
+              label: 'NLSY97',
+              data: [0.637, null, 0.728, 0.898],
+              backgroundColor: C.nlsy97,
+              borderColor: C.nlsy97,
+              borderWidth: 1,
+              borderRadius: 4,
+              barPercentage: 0.7,
+              categoryPercentage: 0.6
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 20 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              beginAtZero: true,
+              max: 1.1,
+              title: {
+                display: true,
+                text: 'Odds Ratio per SD',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { color: C.textSec, usePointStyle: true, pointStyle: 'rectRounded' }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  if (ctx.parsed.y == null) return '';
+                  return ctx.dataset.label + ': OR = ' + ctx.parsed.y.toFixed(3);
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'healthBarLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            chart.data.datasets.forEach(function (ds, di) {
+              var meta = chart.getDatasetMeta(di);
+              meta.data.forEach(function (bar, i) {
+                var val = ds.data[i];
+                if (val == null) return;
+                ctx2.save();
+                ctx2.fillStyle = C.text;
+                ctx2.font = '600 11px ' + Chart.defaults.font.family;
+                ctx2.textAlign = 'center';
+                ctx2.textBaseline = 'bottom';
+                ctx2.fillText(val.toFixed(3), bar.x, bar.y - 4);
+                ctx2.restore();
+              });
+            });
+          }
+        },
+        {
+          id: 'healthRefLine',
+          beforeDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            var yScale = chart.scales.y;
+            var xScale = chart.scales.x;
+            var y1 = yScale.getPixelForValue(1);
+            ctx2.save();
+            ctx2.strokeStyle = C.textSec;
+            ctx2.lineWidth = 1;
+            ctx2.setLineDash([4, 4]);
+            ctx2.beginPath();
+            ctx2.moveTo(xScale.left, y1);
+            ctx2.lineTo(xScale.right, y1);
+            ctx2.stroke();
+            ctx2.restore();
+          }
+        }]
+      });
+    }
+
+    // ── 8. Mediation: waterfall bar ──
+    var ctxMed = document.getElementById('chartMediation');
+    if (ctxMed) {
+      var medLabels = ['Baseline', '+ Education', '+ Employment', '+ Job Zone', '+ All Mediators'];
+      var medBetas = [1.256, 1.179, 1.045, 0.966, 0.876];
+      var medPcts = ['', '\u22126.1%', '\u221216.6%', '\u22122.7% (suppressor)', '\u221230.3%'];
+
+      charts.mediation = new Chart(ctxMed.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: medLabels,
+          datasets: [{
+            label: '\u03B2 (g \u2192 log earnings)',
+            data: medBetas,
+            backgroundColor: medBetas.map(function (v, i) {
+              if (i === 0) return C.nlsy79;
+              if (i === 3) return C.orange;
+              return C.accent;
+            }),
+            borderColor: medBetas.map(function (v, i) {
+              if (i === 0) return C.nlsy79;
+              if (i === 3) return C.orange;
+              return C.accent;
+            }),
+            borderWidth: 1,
+            borderRadius: 4,
+            barPercentage: 0.55
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 30 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 500, size: 12 } }
+            },
+            y: {
+              beginAtZero: true,
+              max: 1.5,
+              title: {
+                display: true,
+                text: '\u03B2 (log annual earnings)',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (ctx) {
+                  return '\u03B2 = ' + ctx.parsed.y.toFixed(3);
+                },
+                afterLabel: function (ctx) {
+                  return medPcts[ctx.dataIndex] || '';
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'medBarLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            var meta = chart.getDatasetMeta(0);
+            meta.data.forEach(function (bar, i) {
+              var val = medBetas[i];
+              ctx2.save();
+              ctx2.fillStyle = C.text;
+              ctx2.font = '600 12px ' + Chart.defaults.font.family;
+              ctx2.textAlign = 'center';
+              ctx2.textBaseline = 'bottom';
+              ctx2.fillText(val.toFixed(3), bar.x, bar.y - 14);
+              if (medPcts[i]) {
+                ctx2.font = '500 11px ' + Chart.defaults.font.family;
+                ctx2.fillStyle = C.textSec;
+                ctx2.fillText(medPcts[i], bar.x, bar.y - 2);
+              }
+              ctx2.restore();
+            });
+          }
+        }]
+      });
+    }
+  }
+
+  buildCharts();
+  window.cdRebuildCharts = buildCharts;
+})();
+</script>
+
+</body>
+</html>

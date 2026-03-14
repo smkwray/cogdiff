@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Subgroups &mdash; cogdiff</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">cog<span class="logo-accent">diff</span></a>
+    <div class="header-controls">
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <button id="themeToggle" class="theme-toggle" onclick="cdToggleTheme()" aria-label="Toggle theme">&#9790;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="measurement.html">Measurement</a></li>
+        <li><a href="outcomes.html">Outcomes</a></li>
+        <li><a href="subgroups.html" class="active">Subgroups</a></li>
+        <li><a href="family.html">Family</a></li>
+        <li><a href="methodology.html">Methods</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Content ─────────────────────────────────────────────── -->
+<main class="content">
+
+  <h1>Subgroup Analyses</h1>
+  <p class="page-intro">Sex differences in <em>g</em><sub>proxy</sub> disaggregated by race/ethnicity and parental education (SES), with heterogeneity tests and SAT/ACT external validity.</p>
+
+  <!-- ── 1. Race × Sex Interaction ───────────────────────────── -->
+  <section class="section" id="race-sex">
+    <div class="section-header">
+      <h2>Race &times; Sex Interaction</h2>
+    </div>
+
+    <p>Sex differences in <em>g</em><sub>proxy</sub> vary across race/ethnicity groups. Heterogeneity tests show significant variation in NLSY79 (<em>p</em> &lt; 0.001) and NLSY97 (<em>p</em> &lt; 0.001) but not CNLSY (<em>p</em> = 0.88).</p>
+
+    <div class="chart-container">
+      <h3>Sex Difference in <em>g</em><sub>proxy</sub> by Race Group</h3>
+      <p class="chart-subtitle">Cohen's <em>d</em> (male &minus; female) within each race/ethnicity &times; cohort cell</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartRaceSex"></canvas>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Race Group</th>
+          <th class="num">N</th>
+          <th class="num"><em>d</em><sub>g_proxy</sub></th>
+          <th class="num">SE</th>
+          <th class="num">95% CI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Black</td>
+          <td class="num">2,345</td>
+          <td class="num">0.125</td>
+          <td class="num">0.041</td>
+          <td class="num">[0.044, 0.206]</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Hispanic</td>
+          <td class="num">1,361</td>
+          <td class="num">0.312</td>
+          <td class="num">0.055</td>
+          <td class="num">[0.205, 0.419]</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Non-Black Non-Hispanic</td>
+          <td class="num">5,555</td>
+          <td class="num">0.374</td>
+          <td class="num">0.027</td>
+          <td class="num">[0.321, 0.427]</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Black</td>
+          <td class="num">1,784</td>
+          <td class="num">&minus;0.159</td>
+          <td class="num">0.047</td>
+          <td class="num">[&minus;0.252, &minus;0.066]</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Hispanic</td>
+          <td class="num">1,346</td>
+          <td class="num">0.060</td>
+          <td class="num">0.055</td>
+          <td class="num">[&minus;0.047, 0.167]</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Non-Black Non-Hispanic</td>
+          <td class="num">3,862</td>
+          <td class="num">0.136</td>
+          <td class="num">0.032</td>
+          <td class="num">[0.073, 0.199]</td>
+        </tr>
+        <tr>
+          <td>CNLSY</td>
+          <td>Black</td>
+          <td class="num">43</td>
+          <td class="num">0.473</td>
+          <td class="num">0.310</td>
+          <td class="num">[&minus;0.135, 1.080]</td>
+        </tr>
+        <tr>
+          <td>CNLSY</td>
+          <td>Hispanic</td>
+          <td class="num">31</td>
+          <td class="num">0.229</td>
+          <td class="num">0.377</td>
+          <td class="num">[&minus;0.509, 0.967]</td>
+        </tr>
+        <tr>
+          <td>CNLSY</td>
+          <td>Non-Black Non-Hispanic</td>
+          <td class="num">109</td>
+          <td class="num">0.369</td>
+          <td class="num">0.193</td>
+          <td class="num">[&minus;0.010, 0.748]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">
+      <p><strong>In NLSY97, Black females outscore Black males by 0.16 SD</strong> &mdash; a reversal from NLSY79's 0.12 SD male advantage in the same race group.</p>
+    </div>
+  </section>
+
+  <!-- ── 2. SES Moderation ───────────────────────────────────── -->
+  <section class="section" id="ses-moderation">
+    <div class="section-header">
+      <h2>SES Moderation</h2>
+    </div>
+
+    <div class="chart-container">
+      <h3>Sex Difference by Parent Education Tercile</h3>
+      <p class="chart-subtitle">Cohen's <em>d</em> (male &minus; female) within low / mid / high parental-education terciles</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartSES"></canvas>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>SES Bin</th>
+          <th class="num"><em>d</em><sub>g_proxy</sub></th>
+          <th class="num">SE</th>
+          <th class="num">95% CI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Low</td>
+          <td class="num">0.088</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Mid</td>
+          <td class="num">0.315</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>High</td>
+          <td class="num">0.474</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Low</td>
+          <td class="num">0.108</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Mid</td>
+          <td class="num">0.106</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>High</td>
+          <td class="num">0.073</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>CNLSY</td>
+          <td>Low</td>
+          <td class="num">0.539</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>CNLSY</td>
+          <td>Mid</td>
+          <td class="num">0.501</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>CNLSY</td>
+          <td>High</td>
+          <td class="num">0.043</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">
+      <p><strong>In NLSY79, the sex difference widens with SES (0.09 &rarr; 0.47).</strong> In NLSY97, there is no SES gradient (0.07&ndash;0.11). CNLSY reverses the pattern.</p>
+    </div>
+  </section>
+
+  <!-- ── 3. SAT/ACT External Validity ────────────────────────── -->
+  <section class="section" id="sat-act">
+    <div class="section-header">
+      <h2>SAT/ACT External Validity (NLSY97)</h2>
+    </div>
+
+    <div class="chart-container">
+      <h3>SAT/ACT Correlation with <em>g</em><sub>proxy</sub> by Race</h3>
+      <p class="chart-subtitle">Pearson <em>r</em> between standardized test scores and <em>g</em><sub>proxy</sub> (NLSY97 only)</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartSATACT"></canvas>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Race</th>
+          <th class="num">N</th>
+          <th class="num">Pearson <em>r</em></th>
+          <th class="num">&beta;<sub>g</sub></th>
+          <th class="num">R&sup2;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SAT Math</td>
+          <td>Black</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.308</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>SAT Math</td>
+          <td>Hispanic</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.410</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>SAT Math</td>
+          <td>Non-Black Non-Hispanic</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.550</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>SAT Verbal</td>
+          <td>Black</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.379</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>SAT Verbal</td>
+          <td>Hispanic</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.392</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>SAT Verbal</td>
+          <td>Non-Black Non-Hispanic</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.529</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>ACT</td>
+          <td>Black</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.432</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>ACT</td>
+          <td>Hispanic</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.369</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>ACT</td>
+          <td>Non-Black Non-Hispanic</td>
+          <td class="num">&mdash;</td>
+          <td class="num">0.661</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>cogdiff &middot; MIT License</span>
+    <span>Data: NLSY79, NLSY97, CNLSY</span>
+  </div>
+</footer>
+
+<!-- ── Charts ──────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  var instances = [];
+
+  function buildCharts() {
+    cdChartDefaults();
+    var C = cdColors();
+
+    // Destroy previous instances
+    instances.forEach(function (ch) { ch.destroy(); });
+    instances.length = 0;
+
+    // ── Chart 1: Sex Difference in g_proxy by Race Group ──
+    var ctx1 = document.getElementById('chartRaceSex');
+    if (ctx1) {
+      instances.push(new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Black', 'Hispanic', 'Non-Black\nNon-Hispanic'],
+          datasets: [
+            {
+              label: 'NLSY79',
+              data: [0.125, 0.312, 0.374],
+              backgroundColor: C.nlsy79 + 'cc',
+              borderColor: C.nlsy79,
+              borderWidth: 1.5,
+              borderRadius: 4
+            },
+            {
+              label: 'NLSY97',
+              data: [-0.159, 0.060, 0.136],
+              backgroundColor: C.nlsy97 + 'cc',
+              borderColor: C.nlsy97,
+              borderWidth: 1.5,
+              borderRadius: 4
+            },
+            {
+              label: 'CNLSY',
+              data: [0.473, 0.229, 0.369],
+              backgroundColor: C.cnlsy + 'cc',
+              borderColor: C.cnlsy,
+              borderWidth: 1.5,
+              borderRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 8 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              title: {
+                display: true,
+                text: "Cohen's d",
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { color: C.textSec, usePointStyle: true, padding: 16 }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tip) {
+                  return tip.dataset.label + ': d = ' + tip.parsed.y.toFixed(3);
+                }
+              }
+            }
+          }
+        }
+      }));
+    }
+
+    // ── Chart 2: Sex Difference by Parent Education Tercile ──
+    var ctx2 = document.getElementById('chartSES');
+    if (ctx2) {
+      instances.push(new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: ['Low', 'Mid', 'High'],
+          datasets: [
+            {
+              label: 'NLSY79',
+              data: [0.088, 0.315, 0.474],
+              backgroundColor: C.nlsy79 + 'cc',
+              borderColor: C.nlsy79,
+              borderWidth: 1.5,
+              borderRadius: 4
+            },
+            {
+              label: 'NLSY97',
+              data: [0.108, 0.106, 0.073],
+              backgroundColor: C.nlsy97 + 'cc',
+              borderColor: C.nlsy97,
+              borderWidth: 1.5,
+              borderRadius: 4
+            },
+            {
+              label: 'CNLSY',
+              data: [0.539, 0.501, 0.043],
+              backgroundColor: C.cnlsy + 'cc',
+              borderColor: C.cnlsy,
+              borderWidth: 1.5,
+              borderRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 8 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              title: {
+                display: true,
+                text: "Cohen's d",
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { color: C.textSec, usePointStyle: true, padding: 16 }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tip) {
+                  return tip.dataset.label + ': d = ' + tip.parsed.y.toFixed(3);
+                }
+              }
+            }
+          }
+        }
+      }));
+    }
+
+    // ── Chart 3: SAT/ACT Correlation with g_proxy by Race ──
+    var ctx3 = document.getElementById('chartSATACT');
+    if (ctx3) {
+      instances.push(new Chart(ctx3, {
+        type: 'bar',
+        data: {
+          labels: ['SAT Math', 'SAT Verbal', 'ACT'],
+          datasets: [
+            {
+              label: 'Black',
+              data: [0.308, 0.379, 0.432],
+              backgroundColor: C.palette[3] + 'cc',
+              borderColor: C.palette[3],
+              borderWidth: 1.5,
+              borderRadius: 4
+            },
+            {
+              label: 'Hispanic',
+              data: [0.410, 0.392, 0.369],
+              backgroundColor: C.palette[4] + 'cc',
+              borderColor: C.palette[4],
+              borderWidth: 1.5,
+              borderRadius: 4
+            },
+            {
+              label: 'Non-Black Non-Hispanic',
+              data: [0.550, 0.529, 0.661],
+              backgroundColor: C.palette[0] + 'cc',
+              borderColor: C.palette[0],
+              borderWidth: 1.5,
+              borderRadius: 4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 8 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              beginAtZero: true,
+              max: 0.8,
+              title: {
+                display: true,
+                text: 'Pearson r',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: {
+              labels: { color: C.textSec, usePointStyle: true, padding: 16 }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (tip) {
+                  return tip.dataset.label + ': r = ' + tip.parsed.y.toFixed(3);
+                }
+              }
+            }
+          }
+        }
+      }));
+    }
+  }
+
+  // Build on load; rebuild on theme toggle
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildCharts);
+  } else {
+    buildCharts();
+  }
+  window.cdRebuildCharts = buildCharts;
+})();
+</script>
+
+</body>
+</html>

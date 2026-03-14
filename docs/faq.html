@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>FAQ &mdash; cogdiff</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">cog<span class="logo-accent">diff</span></a>
+    <div class="header-controls">
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <button id="themeToggle" class="theme-toggle" onclick="cdToggleTheme()" aria-label="Toggle theme">&#9790;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="measurement.html">Measurement</a></li>
+        <li><a href="outcomes.html">Outcomes</a></li>
+        <li><a href="subgroups.html">Subgroups</a></li>
+        <li><a href="family.html">Family</a></li>
+        <li><a href="methodology.html">Methods</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Content ─────────────────────────────────────────────── -->
+<main class="content">
+
+  <h1>FAQ &amp; Glossary</h1>
+  <p class="page-intro">Common questions and key terms.</p>
+
+  <!-- ── FAQ ───────────────────────────────────────────────── -->
+  <section class="section" id="faq">
+    <div class="section-header">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+
+    <!-- 1 -->
+    <div class="faq-item open">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is <em>d<sub>g</sub></em>?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Latent mean difference in general cognitive ability between males and females, expressed in Cohen&rsquo;s <em>d</em> units (standard deviations). Extracted from a multi-group confirmatory factor analysis. Positive values indicate higher male mean.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is VR<sub><em>g</em></sub>?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Variance ratio: male variance divided by female variance. Values above 1 indicate greater male variability. This is computed from the latent factor variances in the CFA model.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is <em>g</em>_proxy?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>An observed (not latent) composite score: the mean of all age-residualized, standardized subtests for a given respondent. Unlike <em>d<sub>g</sub></em>, <em>g</em>_proxy does not require measurement invariance to hold. It is used for all exploratory analyses.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Why is <em>d<sub>g</sub></em> missing for some cohorts?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>The confirmatory pipeline requires scalar measurement invariance before reporting latent mean differences. NLSY97 fails the scalar gate (&Delta;CFI too large). CNLSY fails on both &Delta;CFI and &Delta;RMSEA. For these cohorts, only the observed <em>g</em>_proxy difference is reported.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What does the bootstrap do?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>The family bootstrap resamples entire families (not individuals) to account for within-family correlation, then refits the full SEM on each replicate. 499 replicates produce percentile confidence intervals.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What cohorts are used?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Three: NLSY79 (born 1957&ndash;64, tested 1980), NLSY97 (born 1980&ndash;84, tested 1999), and CNLSY (children of NLSY79 women, tested 1986&ndash;2014 on PIAT).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Are the test batteries comparable?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Not directly. NLSY79 uses 10 ASVAB subtests, NLSY97 uses 12 CAT-ASVAB subtests, and CNLSY uses 3 PIAT subtests. Cross-cohort comparisons use <em>g</em>_proxy (observed composite) rather than latent <em>d<sub>g</sub></em>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What does &ldquo;exploratory&rdquo; mean here?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>All outcome association analyses (education, earnings, health, etc.) use the observed <em>g</em>_proxy composite and are classified as exploratory. Only the measurement invariance&ndash;gated <em>d<sub>g</sub></em> and VR<sub><em>g</em></sub> are confirmatory.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What is SES moderation?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Sex differences are broken out by parental education tercile (low/mid/high) to test whether the magnitude of sex differences varies with socioeconomic background.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is the code open source?</button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Yes. Full pipeline under MIT License. Raw NLSY microdata is not redistributed; researchers access it through the NLS Investigator.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── Glossary ──────────────────────────────────────────── -->
+  <section class="section" id="glossary">
+    <div class="section-header">
+      <h2>Glossary</h2>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Term</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight"><em>g</em></td>
+          <td>General cognitive ability &mdash; the common variance across cognitive tests</td>
+        </tr>
+        <tr>
+          <td class="highlight"><em>d<sub>g</sub></em></td>
+          <td>Latent sex difference in <em>g</em>, Cohen&rsquo;s <em>d</em> units</td>
+        </tr>
+        <tr>
+          <td class="highlight">VR<sub><em>g</em></sub></td>
+          <td>Variance ratio (male/female) of latent <em>g</em></td>
+        </tr>
+        <tr>
+          <td class="highlight"><em>g</em>_proxy</td>
+          <td>Observed composite: mean of standardized, age-residualized subtests</td>
+        </tr>
+        <tr>
+          <td class="highlight">ASVAB</td>
+          <td>Armed Services Vocational Aptitude Battery</td>
+        </tr>
+        <tr>
+          <td class="highlight">PIAT</td>
+          <td>Peabody Individual Achievement Test</td>
+        </tr>
+        <tr>
+          <td class="highlight">CFA</td>
+          <td>Confirmatory factor analysis</td>
+        </tr>
+        <tr>
+          <td class="highlight">SEM</td>
+          <td>Structural equation model</td>
+        </tr>
+        <tr>
+          <td class="highlight">FIML</td>
+          <td>Full information maximum likelihood (handles missing data)</td>
+        </tr>
+        <tr>
+          <td class="highlight">MLR</td>
+          <td>Maximum likelihood with robust standard errors</td>
+        </tr>
+        <tr>
+          <td class="highlight">Measurement invariance</td>
+          <td>Whether the test measures the same construct equivalently across groups</td>
+        </tr>
+        <tr>
+          <td class="highlight">Metric invariance</td>
+          <td>Equal factor loadings across groups</td>
+        </tr>
+        <tr>
+          <td class="highlight">Scalar invariance</td>
+          <td>Equal factor loadings AND intercepts across groups</td>
+        </tr>
+        <tr>
+          <td class="highlight">Bootstrap</td>
+          <td>Resampling with replacement to estimate sampling distributions</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>cogdiff &middot; MIT License</span>
+    <span>Data: NLSY79, NLSY97, CNLSY</span>
+  </div>
+</footer>
+
+</body>
+</html>

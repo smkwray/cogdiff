@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>cogdiff — Cognitive Ability Across NLSY Cohorts</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">cog<span class="logo-accent">diff</span></a>
+    <div class="header-controls">
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <button id="themeToggle" class="theme-toggle" onclick="cdToggleTheme()" aria-label="Toggle theme">&#9790;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="measurement.html">Measurement</a></li>
+        <li><a href="outcomes.html">Outcomes</a></li>
+        <li><a href="subgroups.html">Subgroups</a></li>
+        <li><a href="family.html">Family</a></li>
+        <li><a href="methodology.html">Methods</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Hero ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Cognitive Ability Across NLSY Cohorts</h1>
+    <p class="subtitle">Extracting latent general cognitive ability (<em>g</em>) from ASVAB and PIAT test batteries across three National Longitudinal Survey cohorts, validating against education, income, employment, wealth, health, and family outcomes.</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">3</div>
+        <div class="stat-label">NLSY Cohorts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">33K+</div>
+        <div class="stat-label">Respondents</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">0.86</div>
+        <div class="stat-label">Best AUROC-equivalent</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">150+</div>
+        <div class="stat-label">Result Tables</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Main Content ─────────────────────────────────────────── -->
+<main class="content">
+
+  <!-- Three Cohorts -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Three Cohorts</h2>
+      <span class="section-tag">Data</span>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>NLSY79</h3>
+        <p><strong>N = 12,686</strong> &middot; Birth years 1957&ndash;64</p>
+        <p>10 ASVAB subtests administered in 1980. 30 survey waves from 1979 to 2022 provide decades of outcome data spanning early career through retirement age.</p>
+      </div>
+      <div class="card">
+        <h3>NLSY97</h3>
+        <p><strong>N = 8,984</strong> &middot; Birth years 1980&ndash;84</p>
+        <p>12 CAT-ASVAB subtests administered in 1997&ndash;98. 20 survey waves from 1997 to 2022 track outcomes from adolescence through the late 30s.</p>
+      </div>
+      <div class="card">
+        <h3>CNLSY</h3>
+        <p><strong>N = 11,545</strong> children of NLSY79 mothers</p>
+        <p>3 PIAT subtests (math, reading recognition, reading comprehension). 16 waves from 1986 to 2014 covering childhood through early adulthood.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Findings -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Key Findings</h2>
+      <span class="section-tag">Results</span>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Earnings return tripled</h3>
+        <p>Per-SD cognitive return on earnings rose from ~$4,900 in NLSY79 to $21&ndash;27K in NLSY97 at comparable ages, reflecting the growing economic premium on cognitive ability across cohorts.</p>
+        <a href="outcomes.html" class="card-link">Outcome models</a>
+      </div>
+      <div class="card">
+        <h3>Broad outcome prediction</h3>
+        <p>2&ndash;5&times; higher odds of BA+ degree per SD of <em>g</em>. 1.9&ndash;2.1&times; employment odds. OR 0.65 for arrest and 0.48 for incarceration. Associations span education, labor, health, and family domains.</p>
+        <a href="outcomes.html" class="card-link">Full results</a>
+      </div>
+      <div class="card">
+        <h3>Greater male variability</h3>
+        <p>Males are more variable in cognitive scores across all three cohorts. Observed variance ratio VR = 1.32&ndash;1.36, consistent across both ASVAB and PIAT batteries.</p>
+        <a href="measurement.html" class="card-link">Measurement details</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- At a Glance chart -->
+  <section class="section">
+    <div class="section-header">
+      <h2>At a Glance</h2>
+      <span class="section-tag">Visualization</span>
+    </div>
+    <div class="chart-container">
+      <h3>Per-SD Earnings Return by Cohort (Age-Matched)</h3>
+      <p class="chart-subtitle">Dollar increase in annual earnings per one standard deviation of g<sub>proxy</sub>, at overlapping ages (36&ndash;40).</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartEarningsReturn"></canvas>
+      </div>
+      <p class="chart-note">NLSY79 measured at year 2000 (ages 36&ndash;43). NLSY97 measured at 2019 (ages 35&ndash;39). Age-matched window: 36&ndash;40. Difference: +$14,921 (p &lt; 1e-41).</p>
+    </div>
+  </section>
+
+  <!-- Explore -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Explore</h2>
+      <span class="section-tag">Navigation</span>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Measurement</h3>
+        <p>Factor extraction, invariance testing, and score construction across ASVAB and PIAT batteries.</p>
+        <a href="measurement.html" class="card-link">View measurement</a>
+      </div>
+      <div class="card">
+        <h3>Outcomes</h3>
+        <p>Education, income, employment, wealth, health, and criminal-justice outcomes predicted by cognitive ability.</p>
+        <a href="outcomes.html" class="card-link">View outcomes</a>
+      </div>
+      <div class="card">
+        <h3>Subgroups</h3>
+        <p>Sex differences, variability ratios, and subgroup comparisons across demographic categories.</p>
+        <a href="subgroups.html" class="card-link">View subgroups</a>
+      </div>
+      <div class="card">
+        <h3>Family</h3>
+        <p>Intergenerational transmission of cognitive ability from NLSY79 mothers to CNLSY children.</p>
+        <a href="family.html" class="card-link">View family</a>
+      </div>
+      <div class="card">
+        <h3>Methods</h3>
+        <p>Technical details on statistical methods, model specifications, and analytic decisions.</p>
+        <a href="methodology.html" class="card-link">View methods</a>
+      </div>
+      <div class="card">
+        <h3>FAQ</h3>
+        <p>Frequently asked questions about the project, data sources, and interpretation of results.</p>
+        <a href="faq.html" class="card-link">View FAQ</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>cogdiff &middot; MIT License</span>
+    <span>Data: NLSY79, NLSY97, CNLSY (NLS program, BLS)</span>
+  </div>
+</footer>
+
+<!-- ── Charts ──────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  cdChartDefaults();
+
+  var charts = {};
+
+  function buildCharts() {
+    var C = cdColors();
+
+    // Destroy existing charts
+    Object.keys(charts).forEach(function (k) {
+      if (charts[k]) { charts[k].destroy(); charts[k] = null; }
+    });
+
+    // Re-apply defaults for current theme
+    cdChartDefaults();
+
+    // ── Per-SD Earnings Return by Cohort ──
+    var ctxE = document.getElementById('chartEarningsReturn');
+    if (ctxE) {
+      charts.earningsReturn = new Chart(ctxE.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: ['NLSY79', 'NLSY97'],
+          datasets: [{
+            label: '$/SD of g_proxy',
+            data: [7370, 22290],
+            backgroundColor: [C.nlsy79, C.nlsy97],
+            borderRadius: 4,
+            barPercentage: 0.5
+          }]
+        },
+        options: {
+          responsive: true,
+          aspectRatio: 2,
+          layout: { padding: { top: 25 } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: C.textSec, font: { weight: 600 } } },
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: 'Annual Earnings per SD ($)', color: C.textSec, font: { size: 13, weight: 600 } },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec, callback: function(v) { return '$' + (v/1000).toFixed(0) + 'K'; } }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) { return '$' + ctx.parsed.y.toLocaleString() + ' per SD'; }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'earningsLabels',
+          afterDatasetsDraw: function(chart) {
+            var ctx2 = chart.ctx;
+            chart.data.datasets[0].data.forEach(function(val, i) {
+              var bar = chart.getDatasetMeta(0).data[i];
+              ctx2.save();
+              ctx2.fillStyle = C.text;
+              ctx2.font = '600 13px ' + Chart.defaults.font.family;
+              ctx2.textAlign = 'center';
+              ctx2.textBaseline = 'bottom';
+              ctx2.fillText('$' + (val/1000).toFixed(1) + 'K', bar.x, bar.y - 6);
+              ctx2.restore();
+            });
+          }
+        }]
+      });
+    }
+  }
+
+  buildCharts();
+  window.cdRebuildCharts = buildCharts;
+})();
+</script>
+
+</body>
+</html>

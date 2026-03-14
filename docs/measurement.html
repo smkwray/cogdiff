@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Measurement &mdash; cogdiff</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">cog<span class="logo-accent">diff</span></a>
+    <div class="header-controls">
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <button id="themeToggle" class="theme-toggle" onclick="cdToggleTheme()" aria-label="Toggle theme">&#9790;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="measurement.html" class="active">Measurement</a></li>
+        <li><a href="outcomes.html">Outcomes</a></li>
+        <li><a href="subgroups.html">Subgroups</a></li>
+        <li><a href="family.html">Family</a></li>
+        <li><a href="methodology.html">Methods</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Content ─────────────────────────────────────────────── -->
+<main class="content">
+
+  <h1>Measurement: Sex Differences in <em>g</em></h1>
+  <p class="page-intro">Latent and observed estimates of sex differences in general cognitive ability across three NLSY cohorts, with bootstrap confidence intervals from 499 family-clustered replicates.</p>
+
+  <!-- ── 1. Latent d_g ─────────────────────────────────────── -->
+  <section class="section" id="latent-dg">
+    <div class="section-header">
+      <h2>Latent <em>d<sub>g</sub></em> (Bootstrap)</h2>
+    </div>
+
+    <p><em>d<sub>g</sub></em> is the latent mean difference in Cohen's <em>d</em> units, estimated via multi-group confirmatory factor analysis. Of the three cohorts, only NLSY79 passes both metric and scalar measurement-invariance gates. NLSY97 fails scalar invariance (delta CFI exceeds the cutoff), and CNLSY fails scalar invariance on both delta CFI and delta RMSEA. Results for NLSY97 and CNLSY are therefore excluded from confirmatory reporting and shown here for descriptive purposes only.</p>
+
+    <div class="chart-container">
+      <h3>Latent <em>d<sub>g</sub></em> by Cohort (Bootstrap)</h3>
+      <p class="chart-subtitle">Horizontal bars show point estimates; whiskers show 95% bootstrap CI</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartLatentDg"></canvas>
+      </div>
+      <p class="chart-note">Note: NLSY97 and CNLSY are gated/excluded from confirmatory reporting due to measurement-invariance failures.</p>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th class="num"><em>d<sub>g</sub></em></th>
+          <th class="num">SE</th>
+          <th class="num">95% CI</th>
+          <th>Invariance Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td class="num">0.305</td>
+          <td class="num">0.190</td>
+          <td class="num">[&minus;0.11, 0.36]</td>
+          <td>Passed (confirmatory)</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td class="num">0.017</td>
+          <td class="num">0.023</td>
+          <td class="num">[&minus;0.05, 0.04]</td>
+          <td>Failed scalar (&Delta;CFI)</td>
+        </tr>
+        <tr>
+          <td>CNLSY</td>
+          <td class="num">0.122</td>
+          <td class="num">0.149</td>
+          <td class="num">[&minus;0.25, 0.28]</td>
+          <td>Failed scalar (&Delta;CFI, RMSEA)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 2. Observed g_proxy ───────────────────────────────── -->
+  <section class="section" id="observed-gproxy">
+    <div class="section-header">
+      <h2>Observed <em>g</em>-proxy (Bootstrap)</h2>
+    </div>
+
+    <p><em>g</em>-proxy is a standardized observed composite score. Because it does not depend on latent-variable modeling, it is available for all three cohorts regardless of invariance status.</p>
+
+    <div class="chart-container">
+      <h3>Observed <em>g</em>-proxy Sex Difference</h3>
+      <p class="chart-subtitle">Cohen's d (male &minus; female), with 95% bootstrap CI</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartObservedD"></canvas>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th class="num"><em>d</em></th>
+          <th class="num">SE</th>
+          <th class="num">95% CI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td class="num">0.263</td>
+          <td class="num">0.017</td>
+          <td class="num">[0.178, 0.247]</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY97</td>
+          <td class="num">0.062</td>
+          <td class="num">0.026</td>
+          <td class="num">[0.018, 0.114]</td>
+        </tr>
+        <tr>
+          <td class="highlight">CNLSY</td>
+          <td class="num">0.409</td>
+          <td class="num">0.117</td>
+          <td class="num">[0.076, 0.540]</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 3. Variance Ratios (Observed) ─────────────────────── -->
+  <section class="section" id="variance-ratios">
+    <div class="section-header">
+      <h2>Variance Ratios (Bootstrap)</h2>
+    </div>
+
+    <p>VR<sub><em>g</em></sub> is the ratio of male to female variance on the <em>g</em>-proxy composite. Values greater than 1.0 indicate greater male variability.</p>
+
+    <div class="chart-container">
+      <h3>Observed <em>g</em>-proxy Variance Ratio</h3>
+      <p class="chart-subtitle">VR = Var(male) / Var(female); dashed line at 1.0 marks equal variance</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartObservedVR"></canvas>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th class="num">VR<sub><em>g</em>-proxy</sub></th>
+          <th class="num">SE(log VR)</th>
+          <th class="num">95% CI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td class="num">1.358</td>
+          <td class="num">&mdash;</td>
+          <td class="num">[1.286, 1.426]</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY97</td>
+          <td class="num">1.317</td>
+          <td class="num">&mdash;</td>
+          <td class="num">[1.263, 1.376]</td>
+        </tr>
+        <tr>
+          <td class="highlight">CNLSY</td>
+          <td class="num">1.356</td>
+          <td class="num">&mdash;</td>
+          <td class="num">[0.890, 1.962]</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 4. Latent Variance Ratios ─────────────────────────── -->
+  <section class="section" id="latent-vr">
+    <div class="section-header">
+      <h2>Latent Variance Ratios</h2>
+    </div>
+
+    <div class="chart-container">
+      <h3>Latent VR<sub><em>g</em></sub></h3>
+      <p class="chart-subtitle">VR from multi-group CFA; dashed line at 1.0 marks equal variance</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartLatentVR"></canvas>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <p><strong>Greater male variability is consistent across all three cohorts</strong> for both latent and observed measures, with VR ranging from 1.12 to 1.36.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>cogdiff &middot; MIT License</span>
+    <span>Data: NLSY79, NLSY97, CNLSY (NLS program, BLS)</span>
+  </div>
+</footer>
+
+<!-- ── Charts ──────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  var instances = [];
+
+  function buildCharts() {
+    cdChartDefaults();
+    var C = cdColors();
+
+    // Destroy previous instances
+    instances.forEach(function (ch) { ch.destroy(); });
+    instances.length = 0;
+
+    var cohortLabels = ['NLSY79', 'NLSY97', 'CNLSY'];
+    var cohortColors = [C.nlsy79, C.nlsy97, C.cnlsy];
+
+    // ── Helper: horizontal bar with optional reference line ──
+    function hBar(canvasId, data, ciLow, ciHigh, opts) {
+      opts = opts || {};
+      var ctx = document.getElementById(canvasId);
+      if (!ctx) return;
+
+      var refLine = opts.refLine;
+
+      var plugins = [];
+      if (typeof refLine === 'number') {
+        plugins.push({
+          id: 'refLine_' + canvasId,
+          afterDraw: function (chart) {
+            var xScale = chart.scales.x;
+            var yScale = chart.scales.y;
+            var xPx = xScale.getPixelForValue(refLine);
+            var ctx2 = chart.ctx;
+            ctx2.save();
+            ctx2.setLineDash([6, 4]);
+            ctx2.strokeStyle = C.textSec;
+            ctx2.lineWidth = 1.5;
+            ctx2.beginPath();
+            ctx2.moveTo(xPx, yScale.top);
+            ctx2.lineTo(xPx, yScale.bottom);
+            ctx2.stroke();
+            ctx2.restore();
+          }
+        });
+      }
+
+      var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: cohortLabels,
+          datasets: [{
+            data: data,
+            backgroundColor: cohortColors.map(function (c) { return c + 'cc'; }),
+            borderColor: cohortColors,
+            borderWidth: 1.5,
+            borderRadius: 4,
+            barThickness: 28
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2.2,
+          layout: { padding: { right: 16 } },
+          scales: {
+            x: {
+              grid: { color: C.grid },
+              ticks: { color: C.textSec },
+              title: {
+                display: !!opts.xLabel,
+                text: opts.xLabel || '',
+                color: C.text
+              }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: C.text, font: { weight: '600' } }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (tip) {
+                  var i = tip.dataIndex;
+                  var val = tip.raw.toFixed(3);
+                  var lo = ciLow[i].toFixed(3);
+                  var hi = ciHigh[i].toFixed(3);
+                  return (opts.tipLabel || 'Value') + ': ' + val + '  [' + lo + ', ' + hi + ']';
+                }
+              }
+            }
+          }
+        },
+        plugins: plugins
+      });
+
+      instances.push(chart);
+    }
+
+    // ── Chart 1: Latent d_g ──
+    hBar('chartLatentDg',
+      [0.305, 0.017, 0.122],
+      [-0.106, -0.048, -0.254],
+      [0.363, 0.044, 0.277],
+      { xLabel: "Cohen's d", tipLabel: 'd_g' }
+    );
+
+    // ── Chart 2: Observed g-proxy d ──
+    hBar('chartObservedD',
+      [0.263, 0.062, 0.409],
+      [0.178, 0.018, 0.076],
+      [0.247, 0.114, 0.540],
+      { xLabel: "Cohen's d", tipLabel: 'd' }
+    );
+
+    // ── Chart 3: Observed VR ──
+    hBar('chartObservedVR',
+      [1.358, 1.317, 1.356],
+      [1.286, 1.263, 0.890],
+      [1.426, 1.376, 1.962],
+      { xLabel: 'Variance Ratio', tipLabel: 'VR', refLine: 1.0 }
+    );
+
+    // ── Chart 4: Latent VR ──
+    hBar('chartLatentVR',
+      [1.311, 1.246, 1.120],
+      [0.730, 0.788, 0.687],
+      [1.370, 1.304, 1.498],
+      { xLabel: 'Variance Ratio', tipLabel: 'VR', refLine: 1.0 }
+    );
+  }
+
+  // Build on load; rebuild on theme toggle
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildCharts);
+  } else {
+    buildCharts();
+  }
+  window.cdRebuildCharts = buildCharts;
+})();
+</script>
+
+</body>
+</html>

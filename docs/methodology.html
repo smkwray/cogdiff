@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Methodology &mdash; cogdiff</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">cog<span class="logo-accent">diff</span></a>
+    <div class="header-controls">
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <button id="themeToggle" class="theme-toggle" onclick="cdToggleTheme()" aria-label="Toggle theme">&#9790;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="measurement.html">Measurement</a></li>
+        <li><a href="outcomes.html">Outcomes</a></li>
+        <li><a href="subgroups.html">Subgroups</a></li>
+        <li><a href="family.html">Family</a></li>
+        <li><a href="methodology.html" class="active">Methods</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Content ─────────────────────────────────────────────── -->
+<main class="content">
+
+  <h1>Methodology</h1>
+  <p class="page-intro">Technical details of the measurement pipeline, statistical models, and robustness testing.</p>
+
+  <!-- ── 1. Test Batteries ─────────────────────────────────── -->
+  <section class="section" id="test-batteries">
+    <div class="section-header">
+      <h2>Test Batteries</h2>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Battery</th>
+          <th>Subtests</th>
+          <th class="num">N</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>ASVAB</td>
+          <td>10: GS, AR, WK, PC, NO, CS, AS, MK, MC, EI</td>
+          <td class="num">12,686</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY97</td>
+          <td>CAT-ASVAB</td>
+          <td>12: GS, AR, WK, PC, NO, CS, AS, MK, MC, EI, AI, SI</td>
+          <td class="num">8,984</td>
+        </tr>
+        <tr>
+          <td class="highlight">CNLSY</td>
+          <td>PIAT</td>
+          <td>3: Math, Reading Recognition, Reading Comprehension</td>
+          <td class="num">11,545</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 2. Age Residualization ────────────────────────────── -->
+  <section class="section" id="age-residualization">
+    <div class="section-header">
+      <h2>Age Residualization</h2>
+    </div>
+
+    <ul>
+      <li>Quadratic OLS residualization: each subtest regressed on age + age&sup2; within each cohort</li>
+      <li>Residuals standardized to mean=0, SD=1</li>
+    </ul>
+  </section>
+
+  <!-- ── 3. Structural Equation Models ─────────────────────── -->
+  <section class="section" id="structural-equation-models">
+    <div class="section-header">
+      <h2>Structural Equation Models</h2>
+    </div>
+
+    <ul>
+      <li>Multi-group CFA (males vs females)</li>
+      <li>Estimator: MLR (robust maximum likelihood)</li>
+      <li>Missing data: FIML (full information maximum likelihood)</li>
+      <li>Standardization: std.lv = TRUE, reference group = female</li>
+      <li>Software: R lavaan package via subprocess</li>
+    </ul>
+  </section>
+
+  <!-- ── 4. Measurement Invariance Testing ─────────────────── -->
+  <section class="section" id="measurement-invariance">
+    <div class="section-header">
+      <h2>Measurement Invariance Testing</h2>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>What&rsquo;s Constrained</th>
+          <th>Gate Thresholds</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">Configural</td>
+          <td>Factor structure only</td>
+          <td>Baseline</td>
+        </tr>
+        <tr>
+          <td class="highlight">Metric</td>
+          <td>+ Factor loadings</td>
+          <td>&Delta;CFI &le; 0.010, &Delta;RMSEA &le; 0.015, &Delta;SRMR &le; 0.030</td>
+        </tr>
+        <tr>
+          <td class="highlight">Scalar</td>
+          <td>+ Intercepts</td>
+          <td>&Delta;CFI &le; 0.010, &Delta;RMSEA &le; 0.015, &Delta;SRMR &le; 0.010</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Invariance Results</h3>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Metric</th>
+          <th>Scalar</th>
+          <th><em>d<sub>g</sub></em> Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Pass</td>
+          <td>Pass</td>
+          <td>Confirmatory</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY97</td>
+          <td>Pass</td>
+          <td>Fail (&Delta;CFI)</td>
+          <td>Gated &mdash; exploratory only</td>
+        </tr>
+        <tr>
+          <td class="highlight">CNLSY</td>
+          <td>Pass</td>
+          <td>Fail (&Delta;CFI, &Delta;RMSEA)</td>
+          <td>Gated &mdash; exploratory only</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 5. Bootstrap Inference ────────────────────────────── -->
+  <section class="section" id="bootstrap-inference">
+    <div class="section-header">
+      <h2>Bootstrap Inference</h2>
+    </div>
+
+    <ul>
+      <li>499 family-clustered bootstrap replicates</li>
+      <li>Full SEM refit on each replicate</li>
+      <li>Percentile CIs from bootstrap distribution</li>
+    </ul>
+  </section>
+
+  <!-- ── 6. Exploratory Modules ────────────────────────────── -->
+  <section class="section" id="exploratory-modules">
+    <div class="section-header">
+      <h2>Exploratory Modules</h2>
+    </div>
+
+    <ul>
+      <li><em>g</em>_proxy (observed composite) used for all exploratory analyses</li>
+      <li>Outcome associations via OLS, logistic regression, within-family fixed effects</li>
+      <li>Cross-cohort comparisons at age-matched windows</li>
+    </ul>
+  </section>
+
+  <!-- ── 7. Robustness ─────────────────────────────────────── -->
+  <section class="section" id="robustness">
+    <div class="section-header">
+      <h2>Robustness</h2>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Variant</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">Sampling</td>
+          <td>One pair per family deduplication</td>
+        </tr>
+        <tr>
+          <td class="highlight">Age adjustment</td>
+          <td>Linear vs quadratic vs none</td>
+        </tr>
+        <tr>
+          <td class="highlight">Model form</td>
+          <td>Single-factor vs bifactor</td>
+        </tr>
+        <tr>
+          <td class="highlight">Survey weights</td>
+          <td>Weighted vs unweighted</td>
+        </tr>
+        <tr>
+          <td class="highlight">Dedup seed</td>
+          <td>5 different random seeds</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 8. Data Access ────────────────────────────────────── -->
+  <section class="section" id="data-access">
+    <div class="section-header">
+      <h2>Data Access</h2>
+    </div>
+
+    <ul>
+      <li>Raw data from NLS Investigator (Bureau of Labor Statistics)</li>
+      <li>No microdata redistributed; only aggregate outputs in repository</li>
+      <li>Variable mapping documented in <code>data/raw/manifest.json</code></li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>cogdiff &middot; MIT License</span>
+    <span>Data: NLSY79, NLSY97, CNLSY</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Family &mdash; cogdiff</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">cog<span class="logo-accent">diff</span></a>
+    <div class="header-controls">
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">&#9776;</button>
+      <button id="themeToggle" class="theme-toggle" onclick="cdToggleTheme()" aria-label="Toggle theme">&#9790;</button>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="measurement.html">Measurement</a></li>
+        <li><a href="outcomes.html">Outcomes</a></li>
+        <li><a href="subgroups.html">Subgroups</a></li>
+        <li><a href="family.html" class="active">Family</a></li>
+        <li><a href="methodology.html">Methods</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ── Content ─────────────────────────────────────────────── -->
+<main class="content">
+
+  <h1>Family &amp; Intergenerational</h1>
+  <p class="page-intro">Within-family sibling analyses and mother&ndash;child cognitive transmission from CNLSY.</p>
+
+  <!-- ── 1. Intergenerational Transmission ───────────────────── -->
+  <section class="section" id="intergenerational">
+    <div class="section-header">
+      <h2>Intergenerational Transmission</h2>
+    </div>
+
+    <div class="chart-container">
+      <h3>Mother &rarr; Child <em>g</em><sub>proxy</sub> Transmission</h3>
+      <p class="chart-subtitle">Standardized regression coefficient (&beta;) for mother's <em>g</em><sub>proxy</sub> predicting child's <em>g</em><sub>proxy</sub></p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartTransmission"></canvas>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th class="num">N pairs</th>
+          <th class="num">&beta;<sub>mother_g</sub></th>
+          <th class="num">&beta;<sub>parent_ed</sub></th>
+          <th class="num"><em>p</em></th>
+          <th class="num">R&sup2;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">Bivariate</td>
+          <td class="num">115</td>
+          <td class="num">0.448</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&lt; 0.001</td>
+          <td class="num">0.232</td>
+        </tr>
+        <tr>
+          <td class="highlight">SES-controlled</td>
+          <td class="num">114</td>
+          <td class="num">0.402</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&lt; 0.001</td>
+          <td class="num">0.230</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">
+      <p><strong>Mother&ndash;child <em>g</em><sub>proxy</sub> correlation is 0.45.</strong> Adding parental education reduces the coefficient by only 10% (0.448 &rarr; 0.402), indicating the transmission is largely independent of measured SES.</p>
+    </div>
+  </section>
+
+  <!-- ── 2. Sibling Fixed Effects ────────────────────────────── -->
+  <section class="section" id="sibling-fe">
+    <div class="section-header">
+      <h2>Sibling Fixed Effects</h2>
+    </div>
+
+    <!-- Tabs for NLSY79 vs NLSY97 -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchSibTab(this, 'sibPanel79')">NLSY79</button>
+      <button class="tab-btn" onclick="switchSibTab(this, 'sibPanel97')">NLSY97</button>
+    </div>
+
+    <div id="sibPanel79" class="tab-panel active">
+      <div class="chart-container">
+        <h3>Education: Between vs Within Family (NLSY79)</h3>
+        <p class="chart-subtitle">Years of education per SD of g<sub>proxy</sub></p>
+        <div class="chart-canvas-wrap">
+          <canvas id="chartSibling79"></canvas>
+        </div>
+      </div>
+      <div class="chart-container">
+        <h3>Earnings: Between vs Within Family (NLSY79)</h3>
+        <p class="chart-subtitle">Annual earnings ($) per SD of g<sub>proxy</sub></p>
+        <div class="chart-canvas-wrap">
+          <canvas id="chartSibling79earn"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div id="sibPanel97" class="tab-panel">
+      <div class="chart-container">
+        <h3>Education: Between vs Within Family (NLSY97)</h3>
+        <p class="chart-subtitle">Years of education per SD of g<sub>proxy</sub></p>
+        <div class="chart-canvas-wrap">
+          <canvas id="chartSibling97"></canvas>
+        </div>
+      </div>
+      <div class="chart-container">
+        <h3>Household Income: Between vs Within Family (NLSY97)</h3>
+        <p class="chart-subtitle">Household income ($) per SD of g<sub>proxy</sub></p>
+        <div class="chart-canvas-wrap">
+          <canvas id="chartSibling97inc"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Outcome</th>
+          <th class="num">N families</th>
+          <th class="num">N individuals</th>
+          <th class="num">&beta;<sub>between</sub></th>
+          <th class="num">&beta;<sub>within</sub></th>
+          <th class="num"><em>p</em><sub>within</sub></th>
+          <th class="num">R&sup2;<sub>within</sub></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Education (years)</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+          <td class="num">1.63</td>
+          <td class="num">2.10</td>
+          <td class="num">&lt; 0.001</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Earnings ($)</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+          <td class="num">8,524</td>
+          <td class="num">8,734</td>
+          <td class="num">&lt; 0.001</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Education (years)</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+          <td class="num">1.83</td>
+          <td class="num">1.42</td>
+          <td class="num">&lt; 0.001</td>
+          <td class="num">&mdash;</td>
+        </tr>
+        <tr>
+          <td>NLSY97</td>
+          <td>Household income ($)</td>
+          <td class="num">&mdash;</td>
+          <td class="num">&mdash;</td>
+          <td class="num">16,830</td>
+          <td class="num">6,427</td>
+          <td class="num">&lt; 0.01</td>
+          <td class="num">&mdash;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">
+      <p><strong>Within-family estimates &mdash; which control for all shared family factors &mdash; remain significant for education and earnings in NLSY79,</strong> confirming that cognitive differences predict outcomes even among siblings.</p>
+    </div>
+  </section>
+
+  <!-- ── 3. Sex-Specific Outcome Returns ─────────────────────── -->
+  <section class="section" id="sex-returns">
+    <div class="section-header">
+      <h2>Sex-Specific Outcome Returns</h2>
+    </div>
+
+    <div class="chart-container">
+      <h3>Education Return by Sex</h3>
+      <p class="chart-subtitle">Years of education per SD of g<sub>proxy</sub>, by sex and cohort</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartSexReturns"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h3>Wage Return by Sex (NLSY79)</h3>
+      <p class="chart-subtitle">Annual earnings ($) per SD of g<sub>proxy</sub>, by sex</p>
+      <div class="chart-canvas-wrap">
+        <canvas id="chartSexWages"></canvas>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Outcome</th>
+          <th class="num">&beta;<sub>male</sub></th>
+          <th class="num">&beta;<sub>female</sub></th>
+          <th class="num"><em>p</em> (difference)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Education (years)</td>
+          <td class="num">1.66</td>
+          <td class="num">1.78</td>
+          <td class="num">0.024</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY97</td>
+          <td>Education (years)</td>
+          <td class="num">1.80</td>
+          <td class="num">2.30</td>
+          <td class="num">&lt; 0.001</td>
+        </tr>
+        <tr>
+          <td class="highlight">NLSY79</td>
+          <td>Wages ($)</td>
+          <td class="num">7,241</td>
+          <td class="num">6,072</td>
+          <td class="num">0.002</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="insight-box">
+      <p><strong>Females show stronger <em>g</em> &rarr; education associations in both cohorts.</strong> Males show stronger <em>g</em> &rarr; earnings returns in NLSY79.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── Footer ──────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>cogdiff &middot; MIT License</span>
+    <span>Data: NLSY79, NLSY97, CNLSY</span>
+  </div>
+</footer>
+
+<!-- ── Charts ──────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+
+  var instances = [];
+
+  // Tab switching
+  window.switchSibTab = function (btn, panelId) {
+    // Deactivate all tabs and panels in this section
+    var tabs = btn.parentNode.querySelectorAll('.tab-btn');
+    tabs.forEach(function (t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+
+    var section = btn.closest('.section');
+    var panels = section.querySelectorAll('.tab-panel');
+    panels.forEach(function (p) { p.classList.remove('active'); });
+    document.getElementById(panelId).classList.add('active');
+  };
+
+  function buildCharts() {
+    cdChartDefaults();
+    var C = cdColors();
+
+    // Destroy previous instances
+    instances.forEach(function (ch) { ch.destroy(); });
+    instances.length = 0;
+
+    // ── Chart 1: Mother → Child g_proxy Transmission ──
+    var ctx1 = document.getElementById('chartTransmission');
+    if (ctx1) {
+      instances.push(new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Bivariate\n(N = 115)', 'SES-controlled\n(N = 114)'],
+          datasets: [{
+            label: '\u03B2 (mother g)',
+            data: [0.448, 0.402],
+            backgroundColor: [C.nlsy79 + 'cc', C.nlsy97 + 'cc'],
+            borderColor: [C.nlsy79, C.nlsy97],
+            borderWidth: 1.5,
+            borderRadius: 4,
+            barPercentage: 0.5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          aspectRatio: 2.2,
+          layout: { padding: { top: 20 } },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: C.textSec, font: { weight: 600 } }
+            },
+            y: {
+              beginAtZero: true,
+              max: 0.6,
+              title: {
+                display: true,
+                text: '\u03B2 (standardized)',
+                color: C.textSec,
+                font: { size: 13, weight: 600 }
+              },
+              grid: { color: C.grid },
+              ticks: { color: C.textSec }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (tip) {
+                  return '\u03B2 = ' + tip.parsed.y.toFixed(3);
+                },
+                afterLabel: function (tip) {
+                  var r2 = [0.232, 0.230];
+                  return 'R\u00B2 = ' + r2[tip.dataIndex].toFixed(3);
+                }
+              }
+            }
+          }
+        },
+        plugins: [{
+          id: 'barValueLabels',
+          afterDatasetsDraw: function (chart) {
+            var ctx2 = chart.ctx;
+            chart.data.datasets[0].data.forEach(function (val, i) {
+              var meta = chart.getDatasetMeta(0);
+              var bar = meta.data[i];
+              ctx2.save();
+              ctx2.fillStyle = C.text;
+              ctx2.font = '600 13px ' + Chart.defaults.font.family;
+              ctx2.textAlign = 'center';
+              ctx2.textBaseline = 'bottom';
+              ctx2.fillText(val.toFixed(3), bar.x, bar.y - 6);
+              ctx2.restore();
+            });
+          }
+        }]
+      }));
+    }
+
+    // ── Helper for simple grouped bar ──
+    function sibBar(canvasId, labels, betweenData, withinData, yLabel, fmtFn) {
+      var ctx = document.getElementById(canvasId);
+      if (!ctx) return;
+      instances.push(new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            { label: 'Between-family', data: betweenData, backgroundColor: C.nlsy79 + 'cc', borderColor: C.nlsy79, borderWidth: 1.5, borderRadius: 4 },
+            { label: 'Within-family', data: withinData, backgroundColor: C.nlsy97 + 'cc', borderColor: C.nlsy97, borderWidth: 1.5, borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true, aspectRatio: 2.2, layout: { padding: { top: 8 } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: C.textSec, font: { weight: 600 } } },
+            y: { beginAtZero: true, title: { display: true, text: yLabel, color: C.textSec, font: { size: 13, weight: 600 } }, grid: { color: C.grid }, ticks: { color: C.textSec, callback: fmtFn || function(v) { return v; } } }
+          },
+          plugins: {
+            legend: { labels: { color: C.textSec, usePointStyle: true, padding: 16 } },
+            tooltip: { callbacks: { label: function(tip) { return tip.dataset.label + ': ' + (fmtFn ? fmtFn(tip.parsed.y) : tip.parsed.y.toFixed(2)); } } }
+          }
+        }
+      }));
+    }
+
+    // ── NLSY79 Sibling FE: Education ──
+    sibBar('chartSibling79', ['Education (years)'], [1.63], [2.10], '\u03B2 (years per SD)');
+
+    // ── NLSY79 Sibling FE: Earnings ──
+    sibBar('chartSibling79earn', ['Earnings ($)'], [8524], [8734], '\u03B2 ($ per SD)', function(v) { return '$' + v.toLocaleString(); });
+
+    // ── NLSY97 Sibling FE: Education ──
+    sibBar('chartSibling97', ['Education (years)'], [1.83], [1.42], '\u03B2 (years per SD)');
+
+    // ── NLSY97 Sibling FE: Household Income ──
+    sibBar('chartSibling97inc', ['Household Income ($)'], [16830], [6427], '\u03B2 ($ per SD)', function(v) { return '$' + v.toLocaleString(); });
+
+    // ── Chart 3: Education Return by Sex (separate from wages) ──
+    var ctx3 = document.getElementById('chartSexReturns');
+    if (ctx3) {
+      instances.push(new Chart(ctx3, {
+        type: 'bar',
+        data: {
+          labels: ['NLSY79', 'NLSY97'],
+          datasets: [
+            { label: 'Male', data: [1.66, 1.80], backgroundColor: C.nlsy79 + 'cc', borderColor: C.nlsy79, borderWidth: 1.5, borderRadius: 4 },
+            { label: 'Female', data: [1.78, 2.30], backgroundColor: C.cnlsy + 'cc', borderColor: C.cnlsy, borderWidth: 1.5, borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true, aspectRatio: 2.2, layout: { padding: { top: 8 } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: C.textSec, font: { weight: 600 } } },
+            y: { beginAtZero: true, max: 2.8, title: { display: true, text: '\u03B2 (education years per SD)', color: C.textSec, font: { size: 13, weight: 600 } }, grid: { color: C.grid }, ticks: { color: C.textSec } }
+          },
+          plugins: {
+            legend: { labels: { color: C.textSec, usePointStyle: true, padding: 16 } },
+            tooltip: { callbacks: { label: function(tip) { return tip.dataset.label + ': ' + tip.parsed.y.toFixed(2) + ' years/SD'; } } }
+          }
+        }
+      }));
+    }
+
+    // ── Chart 3b: Wage Return by Sex ──
+    var ctx3b = document.getElementById('chartSexWages');
+    if (ctx3b) {
+      instances.push(new Chart(ctx3b, {
+        type: 'bar',
+        data: {
+          labels: ['NLSY79'],
+          datasets: [
+            { label: 'Male', data: [7241], backgroundColor: C.nlsy79 + 'cc', borderColor: C.nlsy79, borderWidth: 1.5, borderRadius: 4 },
+            { label: 'Female', data: [6072], backgroundColor: C.cnlsy + 'cc', borderColor: C.cnlsy, borderWidth: 1.5, borderRadius: 4 }
+          ]
+        },
+        options: {
+          responsive: true, aspectRatio: 2.2, layout: { padding: { top: 8 } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: C.textSec, font: { weight: 600 } } },
+            y: { beginAtZero: true, title: { display: true, text: '\u03B2 ($ per SD)', color: C.textSec, font: { size: 13, weight: 600 } }, grid: { color: C.grid }, ticks: { color: C.textSec, callback: function(v) { return '$' + v.toLocaleString(); } } }
+          },
+          plugins: {
+            legend: { labels: { color: C.textSec, usePointStyle: true, padding: 16 } },
+            tooltip: { callbacks: { label: function(tip) { return tip.dataset.label + ': $' + tip.parsed.y.toLocaleString() + '/SD'; } } }
+          }
+        }
+      }));
+    }
+  }
+
+  // Build on load; rebuild on theme toggle
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildCharts);
+  } else {
+    buildCharts();
+  }
+  window.cdRebuildCharts = buildCharts;
+})();
+</script>
+
+</body>
+</html>

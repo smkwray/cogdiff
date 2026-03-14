@@ -1,5 +1,7 @@
 # cogdiff
 
+**[Browse the interactive results site](https://smkwray.github.io/cogdiff/)**
+
 Reproducible pipeline for extracting latent general cognitive ability (*g*) from ASVAB and PIAT test batteries, validating it against education, income, employment, and wealth outcomes, and examining how cognitive test performance and its predictive power vary across demographic and socioeconomic subgroups. Uses three cohorts of the National Longitudinal Survey of Youth spanning birth years 1957–present.
 
 This repository ships **code, publication-locked result tables, and figures**. It does **not** ship NLSY microdata. Lawful access to the public-use files is required to reproduce the pipeline from scratch.
