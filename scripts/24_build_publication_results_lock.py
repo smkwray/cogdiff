@@ -191,6 +191,42 @@ def build_publication_results_lock(root: Path) -> dict[str, str]:
         shutil.rmtree(bundle_dir)
     bundle_dir.mkdir(parents=True, exist_ok=True)
 
+    # Guard: refuse to lock results if SEM Python fallback was used.
+    # Check sentinel files, sem_run_status.csv, and per-cohort run_status.json.
+    fallback_cohorts: list[str] = []
+    model_fits_dir = root / "outputs" / "model_fits"
+    if model_fits_dir.exists():
+        for flag in model_fits_dir.rglob("SEM_FALLBACK_USED.flag"):
+            fallback_cohorts.append(flag.parent.name)
+        for rs in model_fits_dir.rglob("run_status.json"):
+            try:
+                import json as _json
+                status_data = _json.loads(rs.read_text(encoding="utf-8"))
+                if status_data.get("python_fallback"):
+                    cohort_name = rs.parent.name
+                    if cohort_name not in fallback_cohorts:
+                        fallback_cohorts.append(cohort_name)
+            except Exception:
+                pass
+    sem_status_path = root / "outputs" / "tables" / "sem_run_status.csv"
+    if sem_status_path.exists():
+        try:
+            sem_status = pd.read_csv(sem_status_path)
+            if "python_fallback" in sem_status.columns and "cohort" in sem_status.columns:
+                for _, row in sem_status.iterrows():
+                    if row.get("python_fallback") is True or str(row.get("python_fallback", "")).lower() == "true":
+                        cohort_name = str(row["cohort"])
+                        if cohort_name not in fallback_cohorts:
+                            fallback_cohorts.append(cohort_name)
+        except Exception:
+            pass
+    if fallback_cohorts:
+        raise RuntimeError(
+            f"Cannot build publication results lock: SEM Python fallback was used for "
+            f"cohort(s) {fallback_cohorts}. Re-run stage 07 with R/lavaan to produce "
+            f"real SEM estimates before locking publication results."
+        )
+
     copied_rows: list[dict[str, Any]] = []
     def _copy_to_bundle(relative_path: str, *, required: bool) -> None:
         src = root / relative_path

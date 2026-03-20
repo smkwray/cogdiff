@@ -528,3 +528,57 @@ def test_script_24_removes_stale_bundle_files_on_rebuild(tmp_path: Path) -> None
     assert not (bundle_dir / "cnlsy_employment_2014.csv").exists()
     with zipfile.ZipFile(root / "outputs" / "tables" / "publication_results_lock.zip") as zf:
         assert "cnlsy_employment_2014.csv" not in {Path(name).name for name in zf.namelist()}
+
+
+def test_script_24_refuses_lock_when_sem_fallback_sentinel_exists(tmp_path: Path) -> None:
+    root = tmp_path.resolve()
+    # Create a SEM fallback sentinel file
+    sentinel_dir = root / "outputs" / "model_fits" / "nlsy79"
+    sentinel_dir.mkdir(parents=True, exist_ok=True)
+    (sentinel_dir / "SEM_FALLBACK_USED.flag").write_text(
+        "Python SEM fallback was used for cohort=nlsy79.\n", encoding="utf-8"
+    )
+    # Create minimal required artifacts so the script gets past file checks
+    tables = root / "outputs" / "tables"
+    _write_data(
+        tables / "g_mean_diff.csv",
+        pd.DataFrame([{"cohort": "nlsy79", "d_g": 0.3, "SE_d_g": 0.03, "ci_low_d_g": 0.24, "ci_high_d_g": 0.36}]),
+    )
+
+    script = _repo_root() / "scripts" / "24_build_publication_results_lock.py"
+    result = subprocess.run(
+        [sys.executable, str(script), "--project-root", str(root)],
+        cwd=_repo_root(),
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode != 0
+    assert "SEM" in result.stderr or "fallback" in result.stderr
+
+
+def test_script_24_refuses_lock_when_run_status_json_indicates_fallback(tmp_path: Path) -> None:
+    import json
+
+    root = tmp_path.resolve()
+    # Create a run_status.json with python_fallback=True (no sentinel file)
+    status_dir = root / "outputs" / "model_fits" / "nlsy97"
+    status_dir.mkdir(parents=True, exist_ok=True)
+    (status_dir / "run_status.json").write_text(
+        json.dumps({"cohort": "nlsy97", "status": "python-fallback", "python_fallback": True}),
+        encoding="utf-8",
+    )
+    tables = root / "outputs" / "tables"
+    _write_data(
+        tables / "g_mean_diff.csv",
+        pd.DataFrame([{"cohort": "nlsy97", "d_g": 0.1}]),
+    )
+
+    script = _repo_root() / "scripts" / "24_build_publication_results_lock.py"
+    result = subprocess.run(
+        [sys.executable, str(script), "--project-root", str(root)],
+        cwd=_repo_root(),
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode != 0
+    assert "nlsy97" in result.stderr

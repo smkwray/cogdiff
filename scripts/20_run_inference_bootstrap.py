@@ -968,7 +968,7 @@ def main() -> int:
             "Use 'g_proxy' to write g_proxy_mean_diff_* tables, etc."
         ),
     )
-    parser.add_argument("--n-bootstrap", type=int, default=150, help="Bootstrap repetitions (>=50).")
+    parser.add_argument("--n-bootstrap", type=int, default=150, help="Bootstrap repetitions (>=50). Default 150 for development; use 499 for publication-quality results.")
     parser.add_argument("--seed", type=int, default=20260221, help="Random seed.")
     parser.add_argument(
         "--engine",

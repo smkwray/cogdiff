@@ -184,7 +184,7 @@ def test_script_16_preflight_nonstrict_allows_critical_failures(tmp_path: Path, 
     assert summary["strict"] is False
 
 
-def test_script_16_optional_r_package_checks_are_noncritical(tmp_path: Path, monkeypatch: object) -> None:
+def test_script_16_missing_r_package_checks_are_critical(tmp_path: Path, monkeypatch: object) -> None:
     root = tmp_path.resolve()
     _write(root / "data/interim/links/links79_pair_expanded.csv", "a,b\n1,2\n")
     module = _load_script_module()
@@ -203,16 +203,16 @@ def test_script_16_optional_r_package_checks_are_noncritical(tmp_path: Path, mon
     )
 
     code = module.main()
-    assert code == 0
+    assert code == 1
 
     status = pd.read_csv(root / "outputs/tables/preflight_status.csv")
     assert status.loc[status["check"] == "rpackage.NlsyLinks", "status"].iloc[0] == "fail"
     assert (
-        bool(status.loc[status["check"] == "rpackage.NlsyLinks", "critical"].iloc[0]) is False
+        bool(status.loc[status["check"] == "rpackage.NlsyLinks", "critical"].iloc[0]) is True
     )
     summary = json.loads((root / "outputs/tables/preflight_summary.json").read_text(encoding="utf-8"))
-    assert summary["overall"] == "pass"
-    assert summary["critical_failures"] == []
+    assert summary["overall"] == "fail"
+    assert "rpackage.NlsyLinks" in summary["critical_failures"]
 
 
 def test_preflight_module_collects_required_rows(tmp_path: Path) -> None:

@@ -286,6 +286,13 @@ def run_python_sem_fallback(
     modindices.to_csv(outdir / "modindices.csv", index=False)
     lavtestscore.to_csv(outdir / "lavtestscore.csv", index=False)
 
+    sentinel = outdir / "SEM_FALLBACK_USED.flag"
+    sentinel.write_text(
+        f"Python SEM fallback was used for cohort={cohort}.\n"
+        f"Fit indices in this directory are APPROXIMATE composites, not lavaan estimates.\n",
+        encoding="utf-8",
+    )
+
     return {
         "status": "python-fallback",
         "n_groups": len(group_values),

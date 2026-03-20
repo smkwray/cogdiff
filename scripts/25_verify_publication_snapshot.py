@@ -97,6 +97,30 @@ def _verify_manifest(manifest_path: Path, root: Path) -> int:
             print(f"[error] manifest missing column: {required}", file=sys.stderr)
             return 1
 
+    # Fail if SEM fallback sentinel files or status artifacts indicate fallback was used
+    fallback_cohorts: list[str] = []
+    model_fits_dir = root / "outputs" / "model_fits"
+    if model_fits_dir.exists():
+        for flag in model_fits_dir.rglob("SEM_FALLBACK_USED.flag"):
+            fallback_cohorts.append(flag.parent.name)
+        for rs in model_fits_dir.rglob("run_status.json"):
+            try:
+                import json as _json
+                status_data = _json.loads(rs.read_text(encoding="utf-8"))
+                if status_data.get("python_fallback"):
+                    cohort_name = rs.parent.name
+                    if cohort_name not in fallback_cohorts:
+                        fallback_cohorts.append(cohort_name)
+            except Exception:
+                pass
+    if fallback_cohorts:
+        print(
+            f"[error] SEM fallback was used for cohort(s) {fallback_cohorts}. "
+            f"Snapshot contains approximate results, not real SEM estimates.",
+            file=sys.stderr,
+        )
+        return 1
+
     failures: list[str] = []
     for _, row in manifest.iterrows():
         rel_path = str(row["path"])

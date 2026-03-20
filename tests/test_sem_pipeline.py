@@ -244,6 +244,7 @@ sample_construct:
     assert (fit_dir / "latent_summary.csv").exists()
     assert (fit_dir / "modindices.csv").exists()
     assert (fit_dir / "lavtestscore.csv").exists()
+    assert (fit_dir / "SEM_FALLBACK_USED.flag").exists()
 
     status = pd.read_csv(root / "outputs/tables/sem_run_status.csv")
     assert status.loc[0, "status"] == "python-fallback"
@@ -252,6 +253,75 @@ sample_construct:
     latent = pd.read_csv(fit_dir / "latent_summary.csv")
     assert {"cohort", "group", "factor", "mean", "var", "sd"}.issubset(latent.columns)
     assert set(latent["factor"]) >= {"g", "Speed", "Math", "Verbal", "Tech"}
+
+
+def test_script_07_errors_when_r_unavailable_without_fallback_flag(tmp_path: Path) -> None:
+    root = tmp_path.resolve()
+    _write(
+        root / "config/paths.yml",
+        "processed_dir: data/processed\noutputs_dir: outputs\nsem_interim_dir: data/interim/sem\n",
+    )
+    _write(
+        root / "config/models.yml",
+        """
+hierarchical_factors:
+  speed: ['NO', CS]
+  math: [AR, MK]
+  verbal: [WK, PC]
+  technical: [GS, AS, MC, EI]
+cnlsy_single_factor: [PPVT, PIAT_RR, PIAT_RC, PIAT_MATH, DIGITSPAN]
+invariance:
+  steps: [configural, metric, scalar, strict]
+  partial_intercepts:
+    nlsy79: [GS~1, AS~1]
+""",
+    )
+    _write(
+        root / "config/nlsy79.yml",
+        """
+cohort: nlsy79
+sample_construct:
+  sex_col: sex
+""",
+    )
+
+    df = pd.DataFrame(
+        {
+            "person_id": [1, 2, 3, 4],
+            "sex": ["F", "F", "M", "M"],
+            "NO": [0.1, 0.2, 0.4, 0.5],
+            "CS": [0.3, 0.1, 0.6, 0.5],
+            "AR": [0.1, 0.1, 0.2, 0.3],
+            "MK": [0.2, 0.2, 0.3, 0.4],
+            "WK": [0.1, 0.2, 0.2, 0.3],
+            "PC": [0.2, 0.3, 0.3, 0.4],
+            "GS": [0.3, 0.4, 0.4, 0.5],
+            "AS": [0.1, 0.2, 0.2, 0.3],
+            "MC": [0.2, 0.4, 0.4, 0.6],
+            "EI": [0.1, 0.2, 0.2, 0.3],
+        }
+    )
+    in_path = root / "data/processed/nlsy79_cfa_resid.csv"
+    in_path.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(in_path, index=False)
+
+    script = _repo_root() / "scripts/07_fit_sem_models.py"
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(script),
+            "--project-root",
+            str(root),
+            "--cohort",
+            "nlsy79",
+        ],
+        cwd=_repo_root(),
+        capture_output=True,
+        text=True,
+        env={**__import__("os").environ, "PATH": ""},  # Ensure Rscript not found
+    )
+    assert result.returncode != 0
+    assert "python-fallback" in result.stderr or "Rscript" in result.stderr
 
 
 def test_script_08_builds_invariance_outputs(tmp_path: Path) -> None:

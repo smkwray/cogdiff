@@ -476,7 +476,15 @@ def main() -> int:
 
     r_available = rscript_path() is not None
     run_r = (not args.skip_r) and r_available
-    use_python_fallback = args.python_fallback or ((not args.skip_r) and (not r_available))
+    use_python_fallback = args.python_fallback
+    if (not args.skip_r) and (not r_available) and (not args.python_fallback):
+        print(
+            "[error] R (Rscript) is not available and --python-fallback was not passed. "
+            "Install R with lavaan, pass --skip-r to skip SEM fitting, or pass "
+            "--python-fallback to use approximate Python composites.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
     rows: list[dict[str, Any]] = []
     for cohort in cohorts:
         result = _run_for_cohort(

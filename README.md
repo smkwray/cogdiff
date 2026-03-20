@@ -836,7 +836,7 @@ See [METHODS.md](public_facing_docs/METHODS.md) for full reproduction instructio
 
 ## Pipeline
 
-Scripts `00`–`25` run sequentially. Stage 13 orchestrates the full sequence; stage 20 runs the bootstrap (499 SEM refits per cohort). The publication lock (`outputs/tables/publication_results_lock/`) pins all tables and figures with hash-verified manifests.
+Scripts `00`–`15` form the core pipeline (orchestrated by stage 13). Scripts `16`–`25` handle infrastructure, preflight checks, verification, and publication locking. Scripts `26`–`70+` are exploratory and auxiliary analyses. Stage 20 runs the inference bootstrap: the default is 150 reps for development; pass `--n-bootstrap 499` for publication-quality results. The `bootstrap_replicates: 200` setting in `config/models.yml` is separate — it controls partial invariance replicability checks in stage 08. The publication lock (`outputs/tables/publication_results_lock/`) pins all tables and figures with hash-verified manifests.
 
 ```mermaid
 flowchart LR

@@ -318,7 +318,12 @@ def main() -> int:
     parser.add_argument(
         "--preflight",
         action="store_true",
-        help="Run preflight dependency checks before requested stages.",
+        help="Run preflight dependency checks (default for --all or --from-stage 0).",
+    )
+    parser.add_argument(
+        "--skip-preflight",
+        action="store_true",
+        help="Skip preflight dependency checks even for full pipeline runs.",
     )
     parser.add_argument(
         "--preflight-strict",
@@ -426,7 +431,12 @@ def main() -> int:
     failure_count = 0
     preflight_failed = False
 
-    if args.preflight:
+    auto_preflight = not args.skip_preflight and args.all
+    run_preflight = args.preflight or auto_preflight
+    # When --all auto-enables preflight, treat it as strict (blocking) by default
+    if auto_preflight and not args.preflight_strict:
+        args.preflight_strict = True
+    if run_preflight:
         preflight_plan = _build_preflight_command(
             repo_root=repo_root,
             target_root=target_root,

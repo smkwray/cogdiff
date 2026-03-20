@@ -133,6 +133,58 @@ def test_script_13_dry_run_includes_preflight_when_requested(tmp_path: Path) -> 
     assert summary.iloc[0]["script"] == "16_preflight_dependencies.py"
 
 
+def test_script_13_all_runs_preflight_by_default(tmp_path: Path) -> None:
+    root = tmp_path.resolve()
+    _write(root / "config/paths.yml", "outputs_dir: outputs\n")
+
+    script = _repo_root() / "scripts" / "13_run_pipeline.py"
+    subprocess.run(
+        [
+            sys.executable,
+            str(script),
+            "--project-root",
+            str(root),
+            "--all",
+            "--stage",
+            "14",
+            "--dry-run",
+        ],
+        cwd=_repo_root(),
+        check=True,
+    )
+
+    summary = pd.read_csv(_latest_summary(root / "outputs/logs/pipeline"))
+    preflight_rows = summary[summary["script"] == "16_preflight_dependencies.py"]
+    assert len(preflight_rows) == 1, "preflight should run by default with --all"
+    assert "--strict" in preflight_rows.iloc[0]["command"], "preflight should be strict by default with --all"
+
+
+def test_script_13_skip_preflight_omits_preflight(tmp_path: Path) -> None:
+    root = tmp_path.resolve()
+    _write(root / "config/paths.yml", "outputs_dir: outputs\n")
+
+    script = _repo_root() / "scripts" / "13_run_pipeline.py"
+    subprocess.run(
+        [
+            sys.executable,
+            str(script),
+            "--project-root",
+            str(root),
+            "--all",
+            "--stage",
+            "14",
+            "--skip-preflight",
+            "--dry-run",
+        ],
+        cwd=_repo_root(),
+        check=True,
+    )
+
+    summary = pd.read_csv(_latest_summary(root / "outputs/logs/pipeline"))
+    preflight_rows = summary[summary["script"] == "16_preflight_dependencies.py"]
+    assert len(preflight_rows) == 0, "preflight should be skipped with --skip-preflight"
+
+
 def test_script_13_executes_preflight_before_stages(tmp_path: Path, monkeypatch: object) -> None:
     module = _pipeline_script_module()
     root = tmp_path.resolve()

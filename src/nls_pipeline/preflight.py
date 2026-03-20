@@ -38,7 +38,7 @@ REQUIRED_LINK_FILES = {
     "nlsy79": "data/interim/links/links79_pair_expanded.csv",
 }
 
-OPTIONAL_R_PACKAGES = ("lavaan", "NlsyLinks")
+REQUIRED_R_PACKAGES = ("lavaan", "NlsyLinks")
 
 
 def _resolve_path(path_value: str | Path, base: Path) -> Path:
@@ -68,7 +68,7 @@ def _load_preflight_config(root: Path) -> tuple[dict[str, list[str]], tuple[str,
     required_paths: dict[str, list[str]] = {
         cohort: [path] for cohort, path in REQUIRED_LINK_FILES.items()
     }
-    r_packages: tuple[str, ...] = OPTIONAL_R_PACKAGES
+    r_packages: tuple[str, ...] = REQUIRED_R_PACKAGES
 
     cfg_path = root / "config" / "preflight.yml"
     if not cfg_path.exists():
@@ -210,7 +210,7 @@ def check_r_package(
         return PreflightCheck(
             check=f"rpackage.{package}",
             status="error",
-            critical=False,
+            critical=True,
             message=f"Unexpected error checking R package {package}: {exc}",
             command=command_text,
         )
@@ -227,7 +227,7 @@ def check_r_package(
     return PreflightCheck(
         check=f"rpackage.{package}",
         status="fail",
-        critical=False,
+        critical=True,
         message=f"R package missing: {package}.",
         command=command_text,
         value=output,
