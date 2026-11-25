@@ -18,7 +18,7 @@ Safety:
   Dry-run by default. Use --confirm (or --run alias) to execute over SSH.
 
 Defaults:
-  --host shanewray@100.71.19.72
+  --host $COGDIFF_REMOTE_HOST (user@host; required with --confirm)
   --tag  remote_run
   --remote-venv '$HOME/venvs/sexg/bin/activate'
   --engine sem_refit
@@ -53,7 +53,7 @@ quote_single() {
   printf "'%s'" "$(printf "%s" "$1" | sed "s/'/'\\\\''/g")"
 }
 
-HOST="shanewray@100.71.19.72"
+HOST="${COGDIFF_REMOTE_HOST:-}"
 REMOTE_DIR=""
 REMOTE_CMD=""
 TARGET=""
@@ -161,6 +161,13 @@ if [[ -z "$TARGET" && -z "$REMOTE_CMD" ]]; then
   echo "[error] one of --target or --cmd is required" >&2
   usage
   exit 2
+fi
+if [[ -z "$HOST" ]]; then
+  if [[ "$DO_RUN" -eq 1 ]]; then
+    echo "[error] --host is required with --confirm (or set COGDIFF_REMOTE_HOST)" >&2
+    exit 2
+  fi
+  HOST="<host>"
 fi
 if [[ "$SYNC_BACK_BOOTSTRAP_DIRS" -eq 1 && "$SYNC_BACK" -ne 1 ]]; then
   echo "[error] --sync-back-bootstrap-dirs requires --sync-back" >&2

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Machine-specific pipeline runner variant. See 13_run_pipeline.py for the canonical version.
+# Variant of 13_run_pipeline.py that runs preflight checks only when --preflight is passed.
 from __future__ import annotations
 
 import argparse

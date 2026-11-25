@@ -14,6 +14,7 @@ def _run_wrapper(*args: str) -> subprocess.CompletedProcess[str]:
     script = _repo_root() / "scripts" / "98_remote_heavy_run.sh"
     env = dict(os.environ)
     env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env.pop("COGDIFF_REMOTE_HOST", None)
     return subprocess.run(
         ["bash", str(script), *args],
         cwd=_repo_root(),
@@ -206,6 +207,39 @@ def test_script_98_rejects_sync_back_bootstrap_dirs_without_sync_back() -> None:
     )
     assert result.returncode == 2
     assert "--sync-back-bootstrap-dirs requires --sync-back" in result.stderr
+
+
+def test_script_98_confirm_without_host_fails_before_ssh() -> None:
+    # There is no built-in host: a real run must name its target machine
+    # rather than silently connecting to someone else's.
+    tag = f"ut98_nohost_{uuid.uuid4().hex[:10]}"
+    log_dir = _repo_root() / "outputs" / "logs" / "remote_runs"
+    before = set(log_dir.glob(f"*_{tag}.log"))
+
+    result = _run_wrapper(
+        "--remote-dir",
+        "/tmp/remoteproj/sexg",
+        "--target",
+        "repro_report",
+        "--tag",
+        tag,
+        "--confirm",
+    )
+    assert result.returncode == 2
+    assert "--host is required with --confirm" in result.stderr
+    assert set(log_dir.glob(f"*_{tag}.log")) == before
+
+
+def test_script_98_dry_run_without_host_shows_placeholder() -> None:
+    result = _run_wrapper(
+        "--remote-dir",
+        "/tmp/remoteproj/sexg",
+        "--target",
+        "repro_report",
+        "--self-test",
+    )
+    assert result.returncode == 0
+    assert "host=<host>" in result.stdout
 
 
 def test_script_98_bootstrap_target_remote_python_override_is_applied() -> None:
