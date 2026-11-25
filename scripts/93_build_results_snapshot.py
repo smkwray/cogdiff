@@ -2179,7 +2179,7 @@ def main() -> int:
 
     generated_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     md: list[str] = []
-    md.append("# sexg results snapshot")
+    md.append("# cogdiff results snapshot")
     md.append("")
     md.append(f"- generated_utc: `{generated_utc}`")
     md.append(f"- project_root: `{_rel(project_root, project_root)}`")

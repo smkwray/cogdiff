@@ -737,7 +737,7 @@ def test_script_93_writes_snapshot_with_bootstrap_and_publication_lock(tmp_path:
     assert output_path.exists()
 
     text = output_path.read_text(encoding="utf-8")
-    assert "# sexg results snapshot" in text
+    assert "# cogdiff results snapshot" in text
     assert "## Warnings" in text
     assert "## Bootstrap vs baseline deltas" in text
     assert "## Bootstrap inference coverage" in text

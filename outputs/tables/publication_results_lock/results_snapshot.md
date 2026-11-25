@@ -1,4 +1,4 @@
-# sexg results snapshot
+# cogdiff results snapshot
 
 - generated_utc: `2026-03-11T22:11:18Z`
 - project_root: `.`
