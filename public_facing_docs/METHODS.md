@@ -158,7 +158,7 @@ This repository does **not** include NLSY microdata. To reproduce the pipeline:
    - [NLSY79 overview](https://www.bls.gov/nls/nlsy79.htm)
    - [NLSY97 overview](https://www.bls.gov/nls/nlsy97.htm)
    - [CNLSY overview](https://www.bls.gov/nls/nlsy79-children.htm)
-2. Place raw archives under `data/raw/` according to `data/raw/manifest.json`
+2. Stage 0 of the pipeline downloads the archives into `data/raw/` and records them in `data/raw/manifest.json`
 3. Do not redistribute restricted or microdata through this repository
 
 ### Variable mapping
@@ -204,7 +204,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 export PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src
 
-# 2. Place NLSY archives in data/raw/ per data/raw/manifest.json
+# 2. Stage 0 downloads the NLSY archives into data/raw/
 
 # 3. Run pipeline (stages 00-15)
 python scripts/13_run_pipeline.py --all --from-stage 0 --to-stage 15

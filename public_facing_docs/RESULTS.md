@@ -1,6 +1,6 @@
 # Results
 
-The [interactive results site](https://smkwray.github.io/cogdiff/) presents the main findings with charts. This page has the full write-up of every module. Terms and estimands are defined in [METHODS.md](METHODS.md) and [GLOSSARY.md](GLOSSARY.md).
+The [interactive results site](https://smkwray.github.io/cogdiff/) presents the main findings with charts. This page has the full write-up of every module. Terms and estimands are defined in [METHODS.md](METHODS.md).
 
 Tables cited by file name are committed in `outputs/tables/publication_results_lock/`; `manuscript_results_lock.md` there lists the quality gates, and `results_snapshot.md` is a generated summary of every table. Tables cited with an `outputs/tables/` path are written by a pipeline run and are not committed. Effect sizes are bootstrap-estimated (499 SEM-refit replications) unless noted.
 

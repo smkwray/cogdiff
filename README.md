@@ -68,7 +68,7 @@ Stage 0 downloads the cohort archives into `data/raw/`. The bootstrap is the slo
 |---|---|
 | `outputs/tables/publication_results_lock/` | Committed result tables and figures with a hash manifest |
 | `outputs/figures/` | Committed figures |
-| `public_facing_docs/` | [RESULTS](public_facing_docs/RESULTS.md), [METHODS](public_facing_docs/METHODS.md), [DATA](public_facing_docs/DATA.md), [REPRODUCE](public_facing_docs/REPRODUCE.md), [FAQ](public_facing_docs/FAQ.md) and [GLOSSARY](public_facing_docs/GLOSSARY.md) |
+| `public_facing_docs/` | [RESULTS](public_facing_docs/RESULTS.md) and [METHODS](public_facing_docs/METHODS.md) |
 | `docs/` | Source of the results site |
 | `config/` | Cohort, model, path and robustness settings |
 | `scripts/`, `src/nls_pipeline/` | Pipeline stages and library code |
