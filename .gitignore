@@ -32,3 +32,6 @@ outputs/*
 !outputs/tables/
 outputs/tables/*
 !outputs/tables/publication_results_lock/
+
+# Local privacy denylist
+.private-denylist
